@@ -23,13 +23,15 @@ This code development was based on our work on [1]. A benchmark comparison with 
 
 
 ## Installation:
-    - ###Option 1: local installation:
+    - ### Option 1: local installation:
 
     To this purpose, the user will need to compile the file `compiler.py` in cython by running the command:
 
     ```python
     python3 compiler.py build_ext --inplace
     ```
+
+    - ### Option 2: global installation:
 
 After successful compilation, the generated `fastforman` file can be imported as a package, for instance:
 

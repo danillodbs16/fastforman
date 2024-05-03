@@ -51,16 +51,16 @@ import fastforman as ff
     
     - `G, max_dim`, where `G` is a simple undirected network graph, and is `max_dim` the maximum dimension.
     
-    
-***Output:*** A dictionary in which the keys are the dimension and the values are the average FRC for fixed dimension.
+  ***Output:*** A dictionary in which the keys are the dimension and the values are the average FRC for fixed        dimension.
     
     
 - ``compute_FRC_frequency``:
 
     ***Input:*** Same as in `compute_average_FRC`.
-    ***Output:*** A dictionary in which the keys are the dimension and the values is a dictionary of the frequency of FRC values.
     
-Below, we provide some examples.
+     ***Output:*** A dictionary in which the keys are the dimension and the values is a dictionary of the frequency of FRC values.
+    
+Below, we provide some examples for clarification.
 
 ## Contact and Support:
 

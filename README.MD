@@ -8,6 +8,9 @@ This code development was based on our work on [1]. A benchmark comparison with 
 
 - `fastforman.pyx`
 - `compiler.py`
+- `setup.py`
+- `Example.ipynb`
+
 ## Python version: 
     3.8.5
 ## Package requirement:

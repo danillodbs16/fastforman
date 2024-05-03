@@ -7,7 +7,7 @@ This code development was based on our work on [1]. A benchmark comparison with 
 ## Content:
 
 - `fastforman.pyx`
-- `compyler.py`
+- `compiler.py`
 ## Python version: 
     3.8.5
 ## Package requirement:

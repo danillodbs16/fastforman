@@ -1,5 +1,4 @@
 build/
-.DS_Store
 codes/*.c
 codes/*.o
 codes/*.so

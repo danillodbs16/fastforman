@@ -10,13 +10,15 @@ def cliques_networkx(G,k):
     Inputs: G, a networkx simple undirected network.
         k, the maximum simplex dimension.
     Output: a generator with all the clique with size at most k+1."""
+    cdef int i
     Cl = (i for i in nx.find_cliques(G))
     C = (tuple(sorted(c)) for c in Cl)
     C=tee(C,k+1)
     for i in range(k+1):
-        K=( i for i in set(c for mc in C[i] for c in combinations(mc, i+1)) if len(i)>1)
+        K=( j0 for j0 in set(c for mc in C[i] for c in combinations(mc, i+1)) )
         for c in K:
-            yield c
+            if len(c)>1:
+                yield list(c)
 
 def cliques_gudhi(data,double f,int d):
     """An adaptation of Gudhi's algorithm for computing the cliques from a poitnt cloud data.
@@ -144,16 +146,15 @@ cpdef dict dict2neigh(dict D,double cutoff):
 def compute_FRC(Obj,dim):
     """Computes the Forman-Ricci Curvature (FRC) up to dimension dim from the object provided.
     Input: 
-    Obj: a tuple - the first entry has to be dictionary of point cloud data and the second entry is the cutoff distance (float)
+    Obj: nx.Graph or tuple. If a nx.graph, returns the average FRC from the graph provided. Weights of nodes and edges are complitely ignored.
+    if a tuple, the first entry has to be dictionary of point cloud data and the second entry is the cutoff distance (float)
     dim: the maximum dimension for computing FRC.
 
     Output:
     a dictionary whose keys are the dimensions and the values are dictionaries with the FRC for each cell."""
     if isinstance(Obj,nx.Graph):
         Neigh={i:set(Obj.neighbors(i)) for i in Obj.nodes()}
-        D={i:[0] for i in Obj.nodes()}
-        cutoff=0
-        C=cliques_gudhi(D.values(),cutoff,dim)
+        C=cliques_networkx(Obj,dim)
         return FRC(C,Neigh)
     else:
         
@@ -167,29 +168,44 @@ def compute_average_FRC(Obj,dim):
     """Computes the average Forman-Ricci Curvature (FRC) up to dimension dim from the object provided.
     The average FRC is known as the sum of all local FRC divided by the number of d-cells.
     Input: 
-    Obj: a tuple - the first entry has to be dictionary of point cloud data and the second entry is the cutoff distance (float)
+    Obj: nx.Graph or tuple. If a nx.graph, returns the average FRC from the graph provided. Weights of nodes and edges are complitely ignored.
+    if a tuple, the first entry has to be dictionary of point cloud data and the second entry is the cutoff distance (float)
     dim: the maximum dimension for computing FRC.
 
     Output:
     a dictionary whose keys are the dimensions and the values are the average FRC for respective dimension."""
-    
+    if isinstance(Obj,nx.Graph):
+        Neigh={i:set(Obj.neighbors(i)) for i in Obj.nodes()}
+        C=cliques_networkx(Obj,dim)
+        return FRC(C,Neigh)
+        return compute_avg(C,Neigh,dim)
+    else:
         
-    D,cutoff=Obj
-    Neigh=dict2neigh(D,cutoff)
-    C=cliques_gudhi(D.values(),cutoff,dim)
-    return compute_avg(C,Neigh,dim)
+        D,cutoff=Obj
+        Neigh=dict2neigh(D,cutoff)
+        C=cliques_gudhi(D.values(),cutoff,dim)
+        return compute_avg(C,Neigh,dim)
 
 def compute_FRC_frequency(Obj,dim):
     """Computes the frequency of Forman-Ricci Curvature (FRC) values up to dimension dim from the object provided.
     Input: 
-    Obj: a tuple - the first entry has to be dictionary of point cloud data and the second entry is the cutoff distance (float)
+    Obj: nx.Graph or tuple. If a nx.graph, returns the average FRC from the graph provided. Weights of nodes and edges are complitely ignored.
+    if a tuple, the first entry has to be dictionary of point cloud data and the second entry is the cutoff distance (float)
     dim: the maximum dimension for computing FRC.
 
     Output:
     a dictionary whose keys are the dimensions and the values are the average FRC for respective dimension."""
-   
-    D,cutoff=Obj
-    Neigh=dict2neigh(D,cutoff)
-    n=len(D)
-    C=cliques_gudhi(D.values(),cutoff,dim)
-    return frequency(C,Neigh,dim,n)
+    if isinstance(Obj,nx.Graph):
+        Neigh={i:set(Obj.neighbors(i)) for i in Obj.nodes()}
+        n=Obj.number_of_nodes()
+        D={i:[0] for i in Obj.nodes()}
+        cutoff=0
+        C=cliques_gudhi(D.values(),cutoff,dim)
+        return frequency(C,Neigh,dim,n)
+    else:
+        
+        D,cutoff=Obj
+        Neigh=dict2neigh(D,cutoff)
+        n=len(D)
+        C=cliques_gudhi(D.values(),cutoff,dim)
+        return frequency(C,Neigh,dim,n)

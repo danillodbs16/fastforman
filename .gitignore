@@ -1,6 +1,6 @@
 build/
 .DS_Store
-*.ipynb_checkpoints/
 codes/*.c
 codes/*.o
+codes/*.so
 codes/build/

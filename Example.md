@@ -419,13 +419,11 @@ plt.xlim(-100,100)
 
 
 
-    (-100.0, 100.0)
-
 
 
 
     
-![png](output_35_1.png)
+![ ](figs/utput_35_1.png)
     
 
 
@@ -456,13 +454,13 @@ plt.xlim(-100,100)
 
 
 
-    (-100.0, 100.0)
+
 
 
 
 
     
-![png](output_38_1.png)
+![ ](figs/output_38_1.png)
     
 
 
@@ -493,13 +491,13 @@ plt.xlim(-100,100)
 
 
 
-    (-100.0, 100.0)
+
 
 
 
 
     
-![png](output_41_1.png)
+![ ](figs/output_41_1.png)
     
 
 
@@ -530,13 +528,12 @@ plt.xlim(-100,100)
 
 
 
-    (-100.0, 100.0)
 
 
 
 
     
-![png](output_44_1.png)
+![ ](figs/utput_44_1.png)
     
 
 
@@ -572,13 +569,13 @@ plt.legend(framealpha=0,fontsize=15,loc="upper right")
 
 
 
-    <matplotlib.legend.Legend at 0x7f7a29f14af0>
+  
 
 
 
 
     
-![png](output_46_1.png)
+![ ](figs/output_46_1.png)
     
 
 

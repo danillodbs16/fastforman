@@ -9,17 +9,15 @@ This code development was based on our work on [1]. A benchmark comparison with 
 - `fastforman.pyx`
 - `compiler.py`
 - `setup.py`
-- `Example.ipynb`
 
 ## Python version: 
     3.8.5
 ## Package requirement:
 
-- `numpy==1.23.0`
-- `networkx==2.6.3`
-- `gudhi==3.5.0`
-- `cython==0.29.21`
-- `distutils==3.8.5`
+- `numpy`
+- `gudhi`
+- `cython`
+
 
 
 ## Installation:

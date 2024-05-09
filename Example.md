@@ -423,7 +423,7 @@ plt.xlim(-100,100)
 
 
     
-![ ](figs/utput_35_1.png)
+![ ](figs/output_35_1.png)
     
 
 
@@ -533,7 +533,7 @@ plt.xlim(-100,100)
 
 
     
-![ ](figs/utput_44_1.png)
+![ ](figs/output_44_1.png)
     
 
 

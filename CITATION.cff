@@ -6,6 +6,6 @@ authors:
   orcid: "https://orcid.org/0000-0002-7762-8862"
 title: "FastForman - An efficient Forman-Ricci Curvature computation for higher-order faces in Simplicial Complexes"
 version: 0.1.8
-doi: 10.5281/zenodo
+doi: 10.5281/zenodo.11167956
 date-released: 2024-05-09
 url: "https://github.com/danillodbs16/fastforman"

@@ -13,8 +13,9 @@ This work is based on our set theoretical approach for computing Forman-Ricci cu
 ## Content:
 
 - `fastforman.pyx`
-- `compiler.py`
+- `compyler.py`
 - `setup.py`
+- `Example.ipynb`
 
 ## Python version: 
     3.8.5
@@ -25,46 +26,77 @@ This work is based on our set theoretical approach for computing Forman-Ricci cu
 - `cython`
 
 
-
 ## Installation:
-   ### Option 1: local installation:
 
-   The will need to compile the file `compiler.py` in cython by running the following command:
-   
-   ```python3 compiler.py build_ext --inplace```
-    
-    
-  
-   ### Option 2: global installation:
-   Execute `setup.py` file by running in the command line:
-   
-   ```pip install . ```
-   
+The files `fastforman.pyx`, `compiler.py` and `setup.py` must be placed at the same directory.
 
-After successful installation, the `fastforman` can be imported as a package, for instance:
+ ### Local installation:
+To this purpose, the user will need to compile the file `compiler.py` in cython by running the command:
+
+```
+python3 compiler.py build_ext --inplace
+```
+
+### Global installation:
+
+Run `setup.py` by executing the command:
+
+```
+pip install .
+```
+
+After successful compilation, the generated `fastforman` file can be imported as a package, for instance:
 
 ```python
 import fastforman as ff
 ```
 ## Functions:
+
+- ``compute_FRC``:
+
+  ***Input:*** 
+        
+    - `D`: A dictionary in which the keys are integer numbers from 0 to len(D)-1 and the values are the N-dimensional points
+    - `cutoff`: Float number for the threshold distance between points
+    - `dim`: Integer, the maximum simplex dimension to compute FRC.,
+   
+    
+    
+   ***Output:*** 
+     
+   A dictionary in which the keys are the dimension and the values are dictionary whose values keys are the simpleces and the values are the respective FRC.
+    
+    
+
+
 - ``compute_average_FRC``:
 
-    ***Input:*** The input parameters can be in two ways:
+  ***Input:*** 
         
-    - `Tuple, max_dim`, where  `Tuple=(D,Thres)` is a tuple containing a dictionary of points (the keys are the points enumeration and the values are the n-dimensional points coordinates) and the distance threshold,`Thres`,  and `(D,max_dim)` is the maximum face dimension, `max_dim`;
+    - `D`: A dictionary in which the keys are integer numbers from 0 to len(D)-1 and the values are the N-dimensional points
+    - `cutoff`: Float number for the threshold distance between points
+    - `dim`: Integer, the maximum simplex dimension to compute FRC.,
+   
     
-    - `G, max_dim`, where `G` is a simple undirected network graph, and is `max_dim` the maximum dimension.
     
-  ***Output:*** A dictionary in which the keys are the dimension and the values are the average FRC for fixed        dimension.
+   ***Output:*** 
+     
+   A dictionary in which the keys are the dimension and the values are the average FRC for fixed dimension.
     
     
 - ``compute_FRC_frequency``:
 
-    ***Input:*** Same as in `compute_average_FRC`.
+     ***Input:*** 
+        
+    - `D`: A dictionary in which the keys are integer numbers from 0 to len(D)-1 and the values are the N-dimensional points
+    - `cutoff`: Float number for the threshold distance between points
+    - `dim`: Integer, the maximum simplex dimension to compute FRC.,
+   
     
-     ***Output:*** A dictionary in which the keys are the dimension and the values is a dictionary of the frequency of FRC values.
+   ***Output:*** A dictionary in which the keys are the dimension and the values is a dictionary of the frequency of FRC values.
     
-Below, we provide some examples for clarification.
+Below, we provide some examples.
+
 
 ## Contact and Support:
 

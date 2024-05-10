@@ -1,5 +1,0 @@
-build/
-codes/*.c
-codes/*.o
-codes/*.so
-codes/build/

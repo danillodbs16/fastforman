@@ -13,7 +13,7 @@ This work is based on our set theoretical approach for computing Forman-Ricci cu
 ## Content:
 
 - `fastforman.pyx`
-- `compyler.py`
+- `compiler.py`
 - `setup.py`
 - `Example.ipynb`
 
@@ -22,7 +22,7 @@ This work is based on our set theoretical approach for computing Forman-Ricci cu
 ## Package requirement:
 
 - `numpy`
--`networkx`
+- `networkx`
 - `gudhi`
 - `cython`
 

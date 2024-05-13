@@ -22,6 +22,7 @@ This work is based on our set theoretical approach for computing Forman-Ricci cu
 ## Package requirement:
 
 - `numpy`
+-`networkx`
 - `gudhi`
 - `cython`
 
@@ -56,11 +57,16 @@ import fastforman as ff
 
   ***Input:*** 
         
-    - `D`: A dictionary in which the keys are integer numbers from 0 to len(D)-1 and the values are the N-dimensional points
-    - `cutoff`: Float number for the threshold distance between points
-    - `dim`: Integer, the maximum simplex dimension to compute FRC.,
+    - `D`, can be:
+     - A `dictionary` in which the keys are integer numbers from 0 to len(D)-1 and the values are the N-dimensional points;
+
+     - A symmetric `numpy.matrix` of float numbers;
+
+     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes.
+
+    - `cutoff`: Float number for the threshold distance between points.
+    - `dim`: Integer, the maximum simplex dimension to compute FRC.
    
-    
     
    ***Output:*** 
      
@@ -73,11 +79,16 @@ import fastforman as ff
 
   ***Input:*** 
         
-    - `D`: A dictionary in which the keys are integer numbers from 0 to len(D)-1 and the values are the N-dimensional points
-    - `cutoff`: Float number for the threshold distance between points
-    - `dim`: Integer, the maximum simplex dimension to compute FRC.,
+    - `D`, can be:
+     - A `dictionary` in which the keys are integer numbers from 0 to len(D)-1 and the values are the N-dimensional points;
+
+     - A symmetric `numpy.matrix` of float numbers;
+
+     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes.
+
+    - `cutoff`: Float number for the threshold distance between points.
+    - `dim`: Integer, the maximum simplex dimension to compute FRC.
    
-    
     
    ***Output:*** 
      
@@ -87,16 +98,22 @@ import fastforman as ff
 - ``compute_FRC_frequency``:
 
      ***Input:*** 
-        
-    - `D`: A dictionary in which the keys are integer numbers from 0 to len(D)-1 and the values are the N-dimensional points
-    - `cutoff`: Float number for the threshold distance between points
-    - `dim`: Integer, the maximum simplex dimension to compute FRC.,
+         
+    - `D`, can be:
+     - A `dictionary` in which the keys are integer numbers from 0 to len(D)-1 and the values are the N-dimensional points;
+
+     - A symmetric `numpy.matrix` of float numbers;
+
+     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes.
+
+    - `cutoff`: Float number for the threshold distance between points.
+    - `dim`: Integer, the maximum simplex dimension to compute FRC.
    
+    
     
    ***Output:*** A dictionary in which the keys are the dimension and the values is a dictionary of the frequency of FRC values.
     
-Below, we provide some examples.
-
+Check out our examples.
 
 ## Contact and Support:
 

@@ -152,7 +152,8 @@ cpdef dict frequency(L, dict Neigh, int max_dim,int n):
                 forman[i][k]
             except:
                 forman[i][k]=0
-        forman[i]= dict(sorted(forman[i].items()))       
+        forman[i]= dict(sorted(forman[i].items())) 
+
     
                 
            
@@ -210,12 +211,14 @@ def compute_FRC(D,cutoff,dim):
     a dictionary whose keys are the dimensions and the values are dictionaries with the FRC for each cell."""
     
     if isinstance(D, np.ndarray):
+        n=len(D)
         M=np.where(D<=cutoff,D,0)
         M=nx.from_numpy_array(M)
         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
         C=cliques_networkx(M,dim)
 
     elif isinstance(D,nx.Graph):
+        n=D.number_of_nodes()
         M=nx.to_numpy_array(D)
         M=np.where(M<=cutoff,M,0)
         M=nx.from_numpy_array(M)
@@ -223,19 +226,27 @@ def compute_FRC(D,cutoff,dim):
         C=cliques_networkx(M,dim)
 
     else:
+        n=len(D)
         Neigh=dict2neigh(D,cutoff)
         C=cliques_gudhi(D.values(),cutoff,dim)
 
     
-    return FRC(C,Neigh)
+    F=FRC(C,Neigh)
 
-cpdef fill_info(dict D,int n):
+    for d in range(1,dim+1):
+        if d not in F.keys():
+            F[d]={i:0 for i in  range(-n+2*(d+1),n+1)}
+    return F
+
+cpdef dict fill_info(dict D,int n):
+    Out=D.copy()
     cdef int k
     for k in range(n):
         try:
-            D[k]
+            Out[k]
         except:
-            D[k]=0
+            Out[k]=0
+    return Out        
 
 def compute_FRC_node(D,cutoff,dim):
     """Computes the Forman-Ricci Curvature (FRC) for the nodes (up to dimension dim from the object provided).
@@ -255,12 +266,14 @@ def compute_FRC_node(D,cutoff,dim):
     If the node does not have curvature, the value information for the node will not be provided."""
     
     if isinstance(D, np.ndarray):
+        n=len(D)
         M=np.where(D<=cutoff,D,0)
         M=nx.from_numpy_array(M)
         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
         C=cliques_networkx(M,dim)
 
     elif isinstance(D,nx.Graph):
+        n=D.number_of_nodes()
         M=nx.to_numpy_array(D)
         M=np.where(M<=cutoff,M,0)
         M=nx.from_numpy_array(M)
@@ -268,12 +281,27 @@ def compute_FRC_node(D,cutoff,dim):
         C=cliques_networkx(M,dim)
 
     else:
+        n=len(D)
         Neigh=dict2neigh(D,cutoff)
         C=cliques_gudhi(D.values(),cutoff,dim)
 
-    
-    return FRC_node(C,Neigh)
+    F=FRC_node(C,Neigh)
 
+    for d in range(1,dim+1):
+        try:
+            F[d]
+        except:
+            F[d]={}
+               
+        for i in range(n):
+            try:
+                F[d][i]
+            except:
+                F[d][i]=np.nan
+        F[d]=dict(sorted(F[d].items()))        
+
+   
+    return F
 
 def compute_average_FRC(D,cutoff,dim):
     """Computes the average Forman-Ricci Curvature (FRC) up to dimension dim from the object provided.
@@ -348,5 +376,9 @@ def compute_FRC_frequency(D,cutoff,dim):
         C=cliques_gudhi(D.values(),cutoff,dim)
     
     n=len(D)
+    F=frequency(C,Neigh,dim,n)
+    for d in range(1,dim+1):
+        if d not in F.keys():
+            F[d]={}
     
-    return frequency(C,Neigh,dim,n)
+    return F

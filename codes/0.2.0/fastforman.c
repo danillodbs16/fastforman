@@ -2148,6 +2148,7 @@ static PyObject *__pyx_f_10fastforman_FRC_node(PyObject *, PyObject *, int __pyx
 static PyObject *__pyx_f_10fastforman_frequency(PyObject *, PyObject *, int, int, int __pyx_skip_dispatch); /*proto*/
 static PyObject *__pyx_f_10fastforman_compute_avg(PyObject *, PyObject *, int, int __pyx_skip_dispatch); /*proto*/
 static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *, double, int __pyx_skip_dispatch); /*proto*/
+static PyObject *__pyx_f_10fastforman_fill_info(PyObject *, int, int __pyx_skip_dispatch); /*proto*/
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
 #define __Pyx_MODULE_NAME "fastforman"
@@ -2181,7 +2182,7 @@ static const char __pyx_k_j0[] = "j0";
 static const char __pyx_k_np[] = "np";
 static const char __pyx_k_nx[] = "nx";
 static const char __pyx_k_FRC[] = "FRC";
-static const char __pyx_k__24[] = "?";
+static const char __pyx_k__26[] = "?";
 static const char __pyx_k_add[] = "add";
 static const char __pyx_k_dim[] = "dim";
 static const char __pyx_k_sum[] = "sum";
@@ -2219,6 +2220,7 @@ static const char __pyx_k_ndarray[] = "ndarray";
 static const char __pyx_k_FRC_node[] = "FRC_node";
 static const char __pyx_k_networkx[] = "networkx";
 static const char __pyx_k_skeleton[] = "skeleton";
+static const char __pyx_k_fill_info[] = "fill_info";
 static const char __pyx_k_frequency[] = "frequency";
 static const char __pyx_k_isenabled[] = "isenabled";
 static const char __pyx_k_itertools[] = "itertools";
@@ -2268,7 +2270,7 @@ static PyObject *__pyx_n_s_Neigh;
 static PyObject *__pyx_n_s_RipsComplex;
 static PyObject *__pyx_n_s_Rips_simplex_tree_sample;
 static PyObject *__pyx_n_s__2;
-static PyObject *__pyx_n_s__24;
+static PyObject *__pyx_n_s__26;
 static PyObject *__pyx_kp_u__3;
 static PyObject *__pyx_n_s_add;
 static PyObject *__pyx_n_s_args;
@@ -2301,6 +2303,7 @@ static PyObject *__pyx_kp_u_enable;
 static PyObject *__pyx_n_s_f;
 static PyObject *__pyx_n_s_fastforman;
 static PyObject *__pyx_kp_s_fastforman_pyx;
+static PyObject *__pyx_n_s_fill_info;
 static PyObject *__pyx_n_s_find_cliques;
 static PyObject *__pyx_n_s_frequency;
 static PyObject *__pyx_n_s_from_numpy_array;
@@ -2365,9 +2368,10 @@ static PyObject *__pyx_pf_10fastforman_11frequency(CYTHON_UNUSED PyObject *__pyx
 static PyObject *__pyx_pf_10fastforman_13compute_avg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_L, PyObject *__pyx_v_Neigh, int __pyx_v_max_dim); /* proto */
 static PyObject *__pyx_pf_10fastforman_15dict2neigh(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, double __pyx_v_cutoff); /* proto */
 static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, PyObject *__pyx_v_cutoff, PyObject *__pyx_v_dim); /* proto */
-static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, PyObject *__pyx_v_cutoff, PyObject *__pyx_v_dim); /* proto */
-static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, PyObject *__pyx_v_cutoff, PyObject *__pyx_v_dim); /* proto */
-static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, PyObject *__pyx_v_cutoff, PyObject *__pyx_v_dim); /* proto */
+static PyObject *__pyx_pf_10fastforman_19fill_info(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, int __pyx_v_n); /* proto */
+static PyObject *__pyx_pf_10fastforman_21compute_FRC_node(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, PyObject *__pyx_v_cutoff, PyObject *__pyx_v_dim); /* proto */
+static PyObject *__pyx_pf_10fastforman_23compute_average_FRC(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, PyObject *__pyx_v_cutoff, PyObject *__pyx_v_dim); /* proto */
+static PyObject *__pyx_pf_10fastforman_25compute_FRC_frequency(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, PyObject *__pyx_v_cutoff, PyObject *__pyx_v_dim); /* proto */
 static PyObject *__pyx_tp_new_10fastforman___pyx_scope_struct__cliques_networkx(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_10fastforman___pyx_scope_struct_1_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_10fastforman___pyx_scope_struct_2_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -2393,7 +2397,8 @@ static PyObject *__pyx_tuple__12;
 static PyObject *__pyx_tuple__14;
 static PyObject *__pyx_tuple__16;
 static PyObject *__pyx_tuple__18;
-static PyObject *__pyx_tuple__22;
+static PyObject *__pyx_tuple__20;
+static PyObject *__pyx_tuple__24;
 static PyObject *__pyx_codeobj__6;
 static PyObject *__pyx_codeobj__8;
 static PyObject *__pyx_codeobj__10;
@@ -2402,9 +2407,10 @@ static PyObject *__pyx_codeobj__13;
 static PyObject *__pyx_codeobj__15;
 static PyObject *__pyx_codeobj__17;
 static PyObject *__pyx_codeobj__19;
-static PyObject *__pyx_codeobj__20;
 static PyObject *__pyx_codeobj__21;
+static PyObject *__pyx_codeobj__22;
 static PyObject *__pyx_codeobj__23;
+static PyObject *__pyx_codeobj__25;
 #endif
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
@@ -2452,7 +2458,7 @@ typedef struct {
   PyObject *__pyx_n_s_RipsComplex;
   PyObject *__pyx_n_s_Rips_simplex_tree_sample;
   PyObject *__pyx_n_s__2;
-  PyObject *__pyx_n_s__24;
+  PyObject *__pyx_n_s__26;
   PyObject *__pyx_kp_u__3;
   PyObject *__pyx_n_s_add;
   PyObject *__pyx_n_s_args;
@@ -2485,6 +2491,7 @@ typedef struct {
   PyObject *__pyx_n_s_f;
   PyObject *__pyx_n_s_fastforman;
   PyObject *__pyx_kp_s_fastforman_pyx;
+  PyObject *__pyx_n_s_fill_info;
   PyObject *__pyx_n_s_find_cliques;
   PyObject *__pyx_n_s_frequency;
   PyObject *__pyx_n_s_from_numpy_array;
@@ -2545,7 +2552,8 @@ typedef struct {
   PyObject *__pyx_tuple__14;
   PyObject *__pyx_tuple__16;
   PyObject *__pyx_tuple__18;
-  PyObject *__pyx_tuple__22;
+  PyObject *__pyx_tuple__20;
+  PyObject *__pyx_tuple__24;
   PyObject *__pyx_codeobj__6;
   PyObject *__pyx_codeobj__8;
   PyObject *__pyx_codeobj__10;
@@ -2554,9 +2562,10 @@ typedef struct {
   PyObject *__pyx_codeobj__15;
   PyObject *__pyx_codeobj__17;
   PyObject *__pyx_codeobj__19;
-  PyObject *__pyx_codeobj__20;
   PyObject *__pyx_codeobj__21;
+  PyObject *__pyx_codeobj__22;
   PyObject *__pyx_codeobj__23;
+  PyObject *__pyx_codeobj__25;
 } __pyx_mstate;
 
 #ifdef __cplusplus
@@ -2620,7 +2629,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_RipsComplex);
   Py_CLEAR(clear_module_state->__pyx_n_s_Rips_simplex_tree_sample);
   Py_CLEAR(clear_module_state->__pyx_n_s__2);
-  Py_CLEAR(clear_module_state->__pyx_n_s__24);
+  Py_CLEAR(clear_module_state->__pyx_n_s__26);
   Py_CLEAR(clear_module_state->__pyx_kp_u__3);
   Py_CLEAR(clear_module_state->__pyx_n_s_add);
   Py_CLEAR(clear_module_state->__pyx_n_s_args);
@@ -2653,6 +2662,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_f);
   Py_CLEAR(clear_module_state->__pyx_n_s_fastforman);
   Py_CLEAR(clear_module_state->__pyx_kp_s_fastforman_pyx);
+  Py_CLEAR(clear_module_state->__pyx_n_s_fill_info);
   Py_CLEAR(clear_module_state->__pyx_n_s_find_cliques);
   Py_CLEAR(clear_module_state->__pyx_n_s_frequency);
   Py_CLEAR(clear_module_state->__pyx_n_s_from_numpy_array);
@@ -2713,7 +2723,8 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_tuple__14);
   Py_CLEAR(clear_module_state->__pyx_tuple__16);
   Py_CLEAR(clear_module_state->__pyx_tuple__18);
-  Py_CLEAR(clear_module_state->__pyx_tuple__22);
+  Py_CLEAR(clear_module_state->__pyx_tuple__20);
+  Py_CLEAR(clear_module_state->__pyx_tuple__24);
   Py_CLEAR(clear_module_state->__pyx_codeobj__6);
   Py_CLEAR(clear_module_state->__pyx_codeobj__8);
   Py_CLEAR(clear_module_state->__pyx_codeobj__10);
@@ -2722,9 +2733,10 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_codeobj__15);
   Py_CLEAR(clear_module_state->__pyx_codeobj__17);
   Py_CLEAR(clear_module_state->__pyx_codeobj__19);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__20);
   Py_CLEAR(clear_module_state->__pyx_codeobj__21);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__22);
   Py_CLEAR(clear_module_state->__pyx_codeobj__23);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__25);
   return 0;
 }
 #endif
@@ -2775,7 +2787,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_RipsComplex);
   Py_VISIT(traverse_module_state->__pyx_n_s_Rips_simplex_tree_sample);
   Py_VISIT(traverse_module_state->__pyx_n_s__2);
-  Py_VISIT(traverse_module_state->__pyx_n_s__24);
+  Py_VISIT(traverse_module_state->__pyx_n_s__26);
   Py_VISIT(traverse_module_state->__pyx_kp_u__3);
   Py_VISIT(traverse_module_state->__pyx_n_s_add);
   Py_VISIT(traverse_module_state->__pyx_n_s_args);
@@ -2808,6 +2820,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_f);
   Py_VISIT(traverse_module_state->__pyx_n_s_fastforman);
   Py_VISIT(traverse_module_state->__pyx_kp_s_fastforman_pyx);
+  Py_VISIT(traverse_module_state->__pyx_n_s_fill_info);
   Py_VISIT(traverse_module_state->__pyx_n_s_find_cliques);
   Py_VISIT(traverse_module_state->__pyx_n_s_frequency);
   Py_VISIT(traverse_module_state->__pyx_n_s_from_numpy_array);
@@ -2868,7 +2881,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_tuple__14);
   Py_VISIT(traverse_module_state->__pyx_tuple__16);
   Py_VISIT(traverse_module_state->__pyx_tuple__18);
-  Py_VISIT(traverse_module_state->__pyx_tuple__22);
+  Py_VISIT(traverse_module_state->__pyx_tuple__20);
+  Py_VISIT(traverse_module_state->__pyx_tuple__24);
   Py_VISIT(traverse_module_state->__pyx_codeobj__6);
   Py_VISIT(traverse_module_state->__pyx_codeobj__8);
   Py_VISIT(traverse_module_state->__pyx_codeobj__10);
@@ -2877,9 +2891,10 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_codeobj__15);
   Py_VISIT(traverse_module_state->__pyx_codeobj__17);
   Py_VISIT(traverse_module_state->__pyx_codeobj__19);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__20);
   Py_VISIT(traverse_module_state->__pyx_codeobj__21);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__22);
   Py_VISIT(traverse_module_state->__pyx_codeobj__23);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__25);
   return 0;
 }
 #endif
@@ -2927,7 +2942,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_RipsComplex __pyx_mstate_global->__pyx_n_s_RipsComplex
 #define __pyx_n_s_Rips_simplex_tree_sample __pyx_mstate_global->__pyx_n_s_Rips_simplex_tree_sample
 #define __pyx_n_s__2 __pyx_mstate_global->__pyx_n_s__2
-#define __pyx_n_s__24 __pyx_mstate_global->__pyx_n_s__24
+#define __pyx_n_s__26 __pyx_mstate_global->__pyx_n_s__26
 #define __pyx_kp_u__3 __pyx_mstate_global->__pyx_kp_u__3
 #define __pyx_n_s_add __pyx_mstate_global->__pyx_n_s_add
 #define __pyx_n_s_args __pyx_mstate_global->__pyx_n_s_args
@@ -2960,6 +2975,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_f __pyx_mstate_global->__pyx_n_s_f
 #define __pyx_n_s_fastforman __pyx_mstate_global->__pyx_n_s_fastforman
 #define __pyx_kp_s_fastforman_pyx __pyx_mstate_global->__pyx_kp_s_fastforman_pyx
+#define __pyx_n_s_fill_info __pyx_mstate_global->__pyx_n_s_fill_info
 #define __pyx_n_s_find_cliques __pyx_mstate_global->__pyx_n_s_find_cliques
 #define __pyx_n_s_frequency __pyx_mstate_global->__pyx_n_s_frequency
 #define __pyx_n_s_from_numpy_array __pyx_mstate_global->__pyx_n_s_from_numpy_array
@@ -3020,7 +3036,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_tuple__14 __pyx_mstate_global->__pyx_tuple__14
 #define __pyx_tuple__16 __pyx_mstate_global->__pyx_tuple__16
 #define __pyx_tuple__18 __pyx_mstate_global->__pyx_tuple__18
-#define __pyx_tuple__22 __pyx_mstate_global->__pyx_tuple__22
+#define __pyx_tuple__20 __pyx_mstate_global->__pyx_tuple__20
+#define __pyx_tuple__24 __pyx_mstate_global->__pyx_tuple__24
 #define __pyx_codeobj__6 __pyx_mstate_global->__pyx_codeobj__6
 #define __pyx_codeobj__8 __pyx_mstate_global->__pyx_codeobj__8
 #define __pyx_codeobj__10 __pyx_mstate_global->__pyx_codeobj__10
@@ -3029,9 +3046,10 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_codeobj__15 __pyx_mstate_global->__pyx_codeobj__15
 #define __pyx_codeobj__17 __pyx_mstate_global->__pyx_codeobj__17
 #define __pyx_codeobj__19 __pyx_mstate_global->__pyx_codeobj__19
-#define __pyx_codeobj__20 __pyx_mstate_global->__pyx_codeobj__20
 #define __pyx_codeobj__21 __pyx_mstate_global->__pyx_codeobj__21
+#define __pyx_codeobj__22 __pyx_mstate_global->__pyx_codeobj__22
 #define __pyx_codeobj__23 __pyx_mstate_global->__pyx_codeobj__23
+#define __pyx_codeobj__25 __pyx_mstate_global->__pyx_codeobj__25
 #endif
 /* #### Code section: module_code ### */
 static PyObject *__pyx_gb_10fastforman_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
@@ -7703,7 +7721,7 @@ static PyObject *__pyx_f_10fastforman_compute_avg(PyObject *__pyx_v_L, PyObject 
  *             output[d]=0.0
  *     return output             # <<<<<<<<<<<<<<
  * 
- * cpdef dict dict2neigh(dict D,double cutoff):
+ * 
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_output);
@@ -7866,8 +7884,8 @@ static PyObject *__pyx_pf_10fastforman_13compute_avg(CYTHON_UNUSED PyObject *__p
   return __pyx_r;
 }
 
-/* "fastforman.pyx":182
- *     return output
+/* "fastforman.pyx":183
+ * 
  * 
  * cpdef dict dict2neigh(dict D,double cutoff):             # <<<<<<<<<<<<<<
  *     cdef int i,x,y
@@ -7908,7 +7926,7 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("dict2neigh", 0);
 
-  /* "fastforman.pyx":185
+  /* "fastforman.pyx":186
  *     cdef int i,x,y
  *     cdef double val
  *     cdef dict Neigh={i:set() for i in D.keys()}             # <<<<<<<<<<<<<<
@@ -7916,14 +7934,14 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
  *     for pair in combinations(D.keys(),2):
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_3 = 0;
     if (unlikely(__pyx_v_D == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "keys");
-      __PYX_ERR(0, 185, __pyx_L1_error)
+      __PYX_ERR(0, 186, __pyx_L1_error)
     }
-    __pyx_t_6 = __Pyx_dict_iterator(__pyx_v_D, 1, __pyx_n_s_keys, (&__pyx_t_4), (&__pyx_t_5)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 185, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_dict_iterator(__pyx_v_D, 1, __pyx_n_s_keys, (&__pyx_t_4), (&__pyx_t_5)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_2);
     __pyx_t_2 = __pyx_t_6;
@@ -7931,16 +7949,16 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
     while (1) {
       __pyx_t_7 = __Pyx_dict_iter_next(__pyx_t_2, __pyx_t_4, &__pyx_t_3, &__pyx_t_6, NULL, NULL, __pyx_t_5);
       if (unlikely(__pyx_t_7 == 0)) break;
-      if (unlikely(__pyx_t_7 == -1)) __PYX_ERR(0, 185, __pyx_L1_error)
+      if (unlikely(__pyx_t_7 == -1)) __PYX_ERR(0, 186, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 185, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 186, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_9genexpr13__pyx_v_i = __pyx_t_7;
-      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_9genexpr13__pyx_v_i); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 185, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_9genexpr13__pyx_v_i); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 186, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_8 = PySet_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 185, __pyx_L1_error)
+      __pyx_t_8 = PySet_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 186, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_t_6, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 185, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_t_6, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 186, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
@@ -7949,20 +7967,20 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
   __pyx_v_Neigh = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "fastforman.pyx":187
+  /* "fastforman.pyx":188
  *     cdef dict Neigh={i:set() for i in D.keys()}
  *     cdef tuple pair
  *     for pair in combinations(D.keys(),2):             # <<<<<<<<<<<<<<
  *         x,y=pair
  *         val=dist(D[x],D[y])
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_combinations); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_combinations); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (unlikely(__pyx_v_D == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "keys");
-    __PYX_ERR(0, 187, __pyx_L1_error)
+    __PYX_ERR(0, 188, __pyx_L1_error)
   }
-  __pyx_t_8 = __Pyx_PyDict_Keys(__pyx_v_D); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyDict_Keys(__pyx_v_D); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_6 = NULL;
   __pyx_t_5 = 0;
@@ -7981,7 +7999,7 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 2+__pyx_t_5);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
@@ -7989,9 +8007,9 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_4 = 0;
     __pyx_t_9 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 187, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 188, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -7999,17 +8017,17 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely((0 < 0))) __PYX_ERR(0, 187, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely((0 < 0))) __PYX_ERR(0, 188, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely((0 < 0))) __PYX_ERR(0, 187, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely((0 < 0))) __PYX_ERR(0, 188, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -8019,17 +8037,17 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 187, __pyx_L1_error)
+          else __PYX_ERR(0, 188, __pyx_L1_error)
         }
         break;
       }
       __Pyx_GOTREF(__pyx_t_1);
     }
-    if (!(likely(PyTuple_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_1))) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (!(likely(PyTuple_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("tuple", __pyx_t_1))) __PYX_ERR(0, 188, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_pair, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "fastforman.pyx":188
+    /* "fastforman.pyx":189
  *     cdef tuple pair
  *     for pair in combinations(D.keys(),2):
  *         x,y=pair             # <<<<<<<<<<<<<<
@@ -8042,7 +8060,7 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 188, __pyx_L1_error)
+        __PYX_ERR(0, 189, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       __pyx_t_1 = PyTuple_GET_ITEM(sequence, 0); 
@@ -8050,46 +8068,46 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
       __Pyx_INCREF(__pyx_t_1);
       __Pyx_INCREF(__pyx_t_8);
       #else
-      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 188, __pyx_L1_error)
+      __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 189, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       #endif
     } else {
-      __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 188, __pyx_L1_error)
+      __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 189, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 189, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 189, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_v_x = __pyx_t_5;
     __pyx_v_y = __pyx_t_7;
 
-    /* "fastforman.pyx":189
+    /* "fastforman.pyx":190
  *     for pair in combinations(D.keys(),2):
  *         x,y=pair
  *         val=dist(D[x],D[y])             # <<<<<<<<<<<<<<
  *         if val <=cutoff:
  *             Neigh[x].add(y)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (unlikely(__pyx_v_D == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 189, __pyx_L1_error)
+      __PYX_ERR(0, 190, __pyx_L1_error)
     }
-    __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 189, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 190, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_D, __pyx_t_6); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 189, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_D, __pyx_t_6); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 190, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     if (unlikely(__pyx_v_D == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 189, __pyx_L1_error)
+      __PYX_ERR(0, 190, __pyx_L1_error)
     }
-    __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 189, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 190, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_D, __pyx_t_6); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 189, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_D, __pyx_t_6); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 190, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_6 = NULL;
@@ -8110,15 +8128,15 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 189, __pyx_L1_error)
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 190, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
-    __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_8); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 189, __pyx_L1_error)
+    __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_8); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 190, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_v_val = __pyx_t_12;
 
-    /* "fastforman.pyx":190
+    /* "fastforman.pyx":191
  *         x,y=pair
  *         val=dist(D[x],D[y])
  *         if val <=cutoff:             # <<<<<<<<<<<<<<
@@ -8128,54 +8146,14 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
     __pyx_t_13 = ((__pyx_v_val <= __pyx_v_cutoff) != 0);
     if (__pyx_t_13) {
 
-      /* "fastforman.pyx":191
+      /* "fastforman.pyx":192
  *         val=dist(D[x],D[y])
  *         if val <=cutoff:
  *             Neigh[x].add(y)             # <<<<<<<<<<<<<<
  *             Neigh[y].add(x)
  *     return Neigh
  */
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_Neigh, __pyx_t_1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 191, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_11);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_add); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 191, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_10 = NULL;
-      __pyx_t_7 = 0;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
-        __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_1);
-        if (likely(__pyx_t_10)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-          __Pyx_INCREF(__pyx_t_10);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_1, function);
-          __pyx_t_7 = 1;
-        }
-      }
-      {
-        PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_t_11};
-        __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
-        __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 191, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_8);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      }
-      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-
-      /* "fastforman.pyx":192
- *         if val <=cutoff:
- *             Neigh[x].add(y)
- *             Neigh[y].add(x)             # <<<<<<<<<<<<<<
- *     return Neigh
- * 
- */
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_Neigh, __pyx_t_1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 192, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
@@ -8183,7 +8161,7 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_add); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 192, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 192, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __pyx_t_10 = NULL;
       __pyx_t_7 = 0;
@@ -8208,7 +8186,47 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
       }
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "fastforman.pyx":190
+      /* "fastforman.pyx":193
+ *         if val <=cutoff:
+ *             Neigh[x].add(y)
+ *             Neigh[y].add(x)             # <<<<<<<<<<<<<<
+ *     return Neigh
+ * 
+ */
+      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_y); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 193, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_Neigh, __pyx_t_1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 193, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_add); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 193, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+      __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_x); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 193, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __pyx_t_10 = NULL;
+      __pyx_t_7 = 0;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
+        __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_1);
+        if (likely(__pyx_t_10)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+          __Pyx_INCREF(__pyx_t_10);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_1, function);
+          __pyx_t_7 = 1;
+        }
+      }
+      {
+        PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_t_11};
+        __pyx_t_8 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
+        __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+        if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 193, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      }
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+
+      /* "fastforman.pyx":191
  *         x,y=pair
  *         val=dist(D[x],D[y])
  *         if val <=cutoff:             # <<<<<<<<<<<<<<
@@ -8217,7 +8235,7 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
  */
     }
 
-    /* "fastforman.pyx":187
+    /* "fastforman.pyx":188
  *     cdef dict Neigh={i:set() for i in D.keys()}
  *     cdef tuple pair
  *     for pair in combinations(D.keys(),2):             # <<<<<<<<<<<<<<
@@ -8227,7 +8245,7 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fastforman.pyx":193
+  /* "fastforman.pyx":194
  *             Neigh[x].add(y)
  *             Neigh[y].add(x)
  *     return Neigh             # <<<<<<<<<<<<<<
@@ -8239,8 +8257,8 @@ static PyObject *__pyx_f_10fastforman_dict2neigh(PyObject *__pyx_v_D, double __p
   __pyx_r = __pyx_v_Neigh;
   goto __pyx_L0;
 
-  /* "fastforman.pyx":182
- *     return output
+  /* "fastforman.pyx":183
+ * 
  * 
  * cpdef dict dict2neigh(dict D,double cutoff):             # <<<<<<<<<<<<<<
  *     cdef int i,x,y
@@ -8314,19 +8332,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_D)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 183, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_cutoff)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 183, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("dict2neigh", 1, 2, 2, 1); __PYX_ERR(0, 182, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("dict2neigh", 1, 2, 2, 1); __PYX_ERR(0, 183, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "dict2neigh") < 0)) __PYX_ERR(0, 182, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "dict2neigh") < 0)) __PYX_ERR(0, 183, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -8335,17 +8353,17 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
     }
     __pyx_v_D = ((PyObject*)values[0]);
-    __pyx_v_cutoff = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_cutoff == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L3_error)
+    __pyx_v_cutoff = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_cutoff == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 183, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("dict2neigh", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 182, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("dict2neigh", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 183, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("fastforman.dict2neigh", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_D), (&PyDict_Type), 1, "D", 1))) __PYX_ERR(0, 182, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_D), (&PyDict_Type), 1, "D", 1))) __PYX_ERR(0, 183, __pyx_L1_error)
   __pyx_r = __pyx_pf_10fastforman_15dict2neigh(__pyx_self, __pyx_v_D, __pyx_v_cutoff);
 
   /* function exit code */
@@ -8366,7 +8384,7 @@ static PyObject *__pyx_pf_10fastforman_15dict2neigh(CYTHON_UNUSED PyObject *__py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("dict2neigh", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_10fastforman_dict2neigh(__pyx_v_D, __pyx_v_cutoff, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_10fastforman_dict2neigh(__pyx_v_D, __pyx_v_cutoff, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -8383,7 +8401,7 @@ static PyObject *__pyx_pf_10fastforman_15dict2neigh(CYTHON_UNUSED PyObject *__py
   return __pyx_r;
 }
 
-/* "fastforman.pyx":195
+/* "fastforman.pyx":196
  *     return Neigh
  * 
  * def compute_FRC(D,cutoff,dim):             # <<<<<<<<<<<<<<
@@ -8444,26 +8462,26 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_D)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_cutoff)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("compute_FRC", 1, 3, 3, 1); __PYX_ERR(0, 195, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("compute_FRC", 1, 3, 3, 1); __PYX_ERR(0, 196, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_dim)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("compute_FRC", 1, 3, 3, 2); __PYX_ERR(0, 195, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("compute_FRC", 1, 3, 3, 2); __PYX_ERR(0, 196, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "compute_FRC") < 0)) __PYX_ERR(0, 195, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "compute_FRC") < 0)) __PYX_ERR(0, 196, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -8478,7 +8496,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("compute_FRC", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 195, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("compute_FRC", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 196, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("fastforman.compute_FRC", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8515,36 +8533,36 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compute_FRC", 0);
 
-  /* "fastforman.pyx":211
+  /* "fastforman.pyx":212
  *     a dictionary whose keys are the dimensions and the values are dictionaries with the FRC for each cell."""
  * 
  *     if isinstance(D, np.ndarray):             # <<<<<<<<<<<<<<
  *         M=np.where(D<=cutoff,D,0)
  *         M=nx.from_numpy_array(M)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = PyObject_IsInstance(__pyx_v_D, __pyx_t_2); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_3 = PyObject_IsInstance(__pyx_v_D, __pyx_t_2); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
-    /* "fastforman.pyx":212
+    /* "fastforman.pyx":213
  * 
  *     if isinstance(D, np.ndarray):
  *         M=np.where(D<=cutoff,D,0)             # <<<<<<<<<<<<<<
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 212, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyObject_RichCompare(__pyx_v_D, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
+    __pyx_t_1 = PyObject_RichCompare(__pyx_v_D, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -8562,23 +8580,23 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 3+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __pyx_v_M = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":213
+    /* "fastforman.pyx":214
  *     if isinstance(D, np.ndarray):
  *         M=np.where(D<=cutoff,D,0)
  *         M=nx.from_numpy_array(M)             # <<<<<<<<<<<<<<
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_nx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 213, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_nx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 214, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -8597,14 +8615,14 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
       PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_v_M};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 214, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":214
+    /* "fastforman.pyx":215
  *         M=np.where(D<=cutoff,D,0)
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}             # <<<<<<<<<<<<<<
@@ -8612,9 +8630,9 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
  * 
  */
     { /* enter inner scope */
-      __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 214, __pyx_L6_error)
+      __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 214, __pyx_L6_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 215, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_6 = NULL;
       __pyx_t_7 = 0;
@@ -8632,7 +8650,7 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
         PyObject *__pyx_callargs[1] = {__pyx_t_6, };
         __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 0+__pyx_t_7);
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L6_error)
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
@@ -8640,9 +8658,9 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
         __pyx_t_5 = __pyx_t_1; __Pyx_INCREF(__pyx_t_5); __pyx_t_8 = 0;
         __pyx_t_9 = NULL;
       } else {
-        __pyx_t_8 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 214, __pyx_L6_error)
+        __pyx_t_8 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 215, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 214, __pyx_L6_error)
+        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 215, __pyx_L6_error)
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       for (;;) {
@@ -8650,17 +8668,17 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
           if (likely(PyList_CheckExact(__pyx_t_5))) {
             if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_5)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 214, __pyx_L6_error)
+            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 215, __pyx_L6_error)
             #else
-            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L6_error)
+            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
           } else {
             if (__pyx_t_8 >= PyTuple_GET_SIZE(__pyx_t_5)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 214, __pyx_L6_error)
+            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 215, __pyx_L6_error)
             #else
-            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L6_error)
+            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
           }
@@ -8670,7 +8688,7 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 214, __pyx_L6_error)
+              else __PYX_ERR(0, 215, __pyx_L6_error)
             }
             break;
           }
@@ -8678,7 +8696,7 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
         }
         __Pyx_XDECREF_SET(__pyx_9genexpr14__pyx_v_i, __pyx_t_1);
         __pyx_t_1 = 0;
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 214, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 215, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_10 = NULL;
         __pyx_t_7 = 0;
@@ -8696,14 +8714,14 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
           PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_9genexpr14__pyx_v_i};
           __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L6_error)
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         }
-        __pyx_t_6 = PySet_New(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 214, __pyx_L6_error)
+        __pyx_t_6 = PySet_New(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 215, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(PyDict_SetItem(__pyx_t_2, (PyObject*)__pyx_9genexpr14__pyx_v_i, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 214, __pyx_L6_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_2, (PyObject*)__pyx_9genexpr14__pyx_v_i, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 215, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -8717,14 +8735,14 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
     __pyx_v_Neigh = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":215
+    /* "fastforman.pyx":216
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)             # <<<<<<<<<<<<<<
  * 
  *     elif isinstance(D,nx.Graph):
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 215, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 216, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -8742,14 +8760,14 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
       PyObject *__pyx_callargs[3] = {__pyx_t_6, __pyx_v_M, __pyx_v_dim};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 2+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __pyx_v_C = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":211
+    /* "fastforman.pyx":212
  *     a dictionary whose keys are the dimensions and the values are dictionaries with the FRC for each cell."""
  * 
  *     if isinstance(D, np.ndarray):             # <<<<<<<<<<<<<<
@@ -8759,33 +8777,33 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
     goto __pyx_L3;
   }
 
-  /* "fastforman.pyx":217
+  /* "fastforman.pyx":218
  *         C=cliques_networkx(M,dim)
  * 
  *     elif isinstance(D,nx.Graph):             # <<<<<<<<<<<<<<
  *         M=nx.to_numpy_array(D)
  *         M=np.where(M<=cutoff,M,0)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_Graph); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_Graph); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = PyObject_IsInstance(__pyx_v_D, __pyx_t_5); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_t_4 = PyObject_IsInstance(__pyx_v_D, __pyx_t_5); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__pyx_t_4 != 0);
   if (__pyx_t_3) {
 
-    /* "fastforman.pyx":218
+    /* "fastforman.pyx":219
  * 
  *     elif isinstance(D,nx.Graph):
  *         M=nx.to_numpy_array(D)             # <<<<<<<<<<<<<<
  *         M=np.where(M<=cutoff,M,0)
  *         M=nx.from_numpy_array(M)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_to_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 218, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_to_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 219, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -8804,26 +8822,26 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
       PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_D};
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 218, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 219, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
     __pyx_v_M = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":219
+    /* "fastforman.pyx":220
  *     elif isinstance(D,nx.Graph):
  *         M=nx.to_numpy_array(D)
  *         M=np.where(M<=cutoff,M,0)             # <<<<<<<<<<<<<<
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 220, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_where); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_where); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 220, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyObject_RichCompare(__pyx_v_M, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_6 = PyObject_RichCompare(__pyx_v_M, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 220, __pyx_L1_error)
     __pyx_t_1 = NULL;
     __pyx_t_7 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -8841,23 +8859,23 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 3+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 219, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 220, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":220
+    /* "fastforman.pyx":221
  *         M=nx.to_numpy_array(D)
  *         M=np.where(M<=cutoff,M,0)
  *         M=nx.from_numpy_array(M)             # <<<<<<<<<<<<<<
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 220, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 221, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 220, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 221, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -8876,14 +8894,14 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
       PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_M};
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 220, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 221, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":221
+    /* "fastforman.pyx":222
  *         M=np.where(M<=cutoff,M,0)
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}             # <<<<<<<<<<<<<<
@@ -8891,9 +8909,9 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
  * 
  */
     { /* enter inner scope */
-      __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 221, __pyx_L12_error)
+      __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 222, __pyx_L12_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 221, __pyx_L12_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L12_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = NULL;
       __pyx_t_7 = 0;
@@ -8911,7 +8929,7 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
         PyObject *__pyx_callargs[1] = {__pyx_t_1, };
         __pyx_t_6 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 0+__pyx_t_7);
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 221, __pyx_L12_error)
+        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 222, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       }
@@ -8919,9 +8937,9 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
         __pyx_t_2 = __pyx_t_6; __Pyx_INCREF(__pyx_t_2); __pyx_t_8 = 0;
         __pyx_t_9 = NULL;
       } else {
-        __pyx_t_8 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 221, __pyx_L12_error)
+        __pyx_t_8 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 221, __pyx_L12_error)
+        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 222, __pyx_L12_error)
       }
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       for (;;) {
@@ -8929,17 +8947,17 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
           if (likely(PyList_CheckExact(__pyx_t_2))) {
             if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_2)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_6 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 221, __pyx_L12_error)
+            __pyx_t_6 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 222, __pyx_L12_error)
             #else
-            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 221, __pyx_L12_error)
+            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 222, __pyx_L12_error)
             __Pyx_GOTREF(__pyx_t_6);
             #endif
           } else {
             if (__pyx_t_8 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 221, __pyx_L12_error)
+            __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 222, __pyx_L12_error)
             #else
-            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 221, __pyx_L12_error)
+            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 222, __pyx_L12_error)
             __Pyx_GOTREF(__pyx_t_6);
             #endif
           }
@@ -8949,7 +8967,7 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 221, __pyx_L12_error)
+              else __PYX_ERR(0, 222, __pyx_L12_error)
             }
             break;
           }
@@ -8957,7 +8975,7 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
         }
         __Pyx_XDECREF_SET(__pyx_9genexpr15__pyx_v_i, __pyx_t_6);
         __pyx_t_6 = 0;
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L12_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_1);
         __pyx_t_10 = NULL;
         __pyx_t_7 = 0;
@@ -8975,14 +8993,14 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
           PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_9genexpr15__pyx_v_i};
           __pyx_t_6 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 221, __pyx_L12_error)
+          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 222, __pyx_L12_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
-        __pyx_t_1 = PySet_New(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L12_error)
+        __pyx_t_1 = PySet_New(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(PyDict_SetItem(__pyx_t_5, (PyObject*)__pyx_9genexpr15__pyx_v_i, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 221, __pyx_L12_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_5, (PyObject*)__pyx_9genexpr15__pyx_v_i, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 222, __pyx_L12_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8996,14 +9014,14 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
     __pyx_v_Neigh = ((PyObject*)__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":222
+    /* "fastforman.pyx":223
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)             # <<<<<<<<<<<<<<
  * 
  *     else:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_1 = NULL;
     __pyx_t_7 = 0;
@@ -9021,14 +9039,14 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
       PyObject *__pyx_callargs[3] = {__pyx_t_1, __pyx_v_M, __pyx_v_dim};
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 2+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 222, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 223, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
     __pyx_v_C = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":217
+    /* "fastforman.pyx":218
  *         C=cliques_networkx(M,dim)
  * 
  *     elif isinstance(D,nx.Graph):             # <<<<<<<<<<<<<<
@@ -9038,7 +9056,7 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
     goto __pyx_L3;
   }
 
-  /* "fastforman.pyx":225
+  /* "fastforman.pyx":226
  * 
  *     else:
  *         Neigh=dict2neigh(D,cutoff)             # <<<<<<<<<<<<<<
@@ -9046,23 +9064,23 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
  * 
  */
   /*else*/ {
-    if (!(likely(PyDict_CheckExact(__pyx_v_D))||((__pyx_v_D) == Py_None) || __Pyx_RaiseUnexpectedTypeError("dict", __pyx_v_D))) __PYX_ERR(0, 225, __pyx_L1_error)
-    __pyx_t_11 = __pyx_PyFloat_AsDouble(__pyx_v_cutoff); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L1_error)
-    __pyx_t_5 = __pyx_f_10fastforman_dict2neigh(((PyObject*)__pyx_v_D), __pyx_t_11, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 225, __pyx_L1_error)
+    if (!(likely(PyDict_CheckExact(__pyx_v_D))||((__pyx_v_D) == Py_None) || __Pyx_RaiseUnexpectedTypeError("dict", __pyx_v_D))) __PYX_ERR(0, 226, __pyx_L1_error)
+    __pyx_t_11 = __pyx_PyFloat_AsDouble(__pyx_v_cutoff); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 226, __pyx_L1_error)
+    __pyx_t_5 = __pyx_f_10fastforman_dict2neigh(((PyObject*)__pyx_v_D), __pyx_t_11, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 226, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_v_Neigh = ((PyObject*)__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":226
+    /* "fastforman.pyx":227
  *     else:
  *         Neigh=dict2neigh(D,cutoff)
  *         C=cliques_gudhi(D.values(),cutoff,dim)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_gudhi); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_gudhi); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_D, __pyx_n_s_values); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 226, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_D, __pyx_n_s_values); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 227, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_10 = NULL;
     __pyx_t_7 = 0;
@@ -9080,7 +9098,7 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
       PyObject *__pyx_callargs[1] = {__pyx_t_10, };
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 0+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
@@ -9101,7 +9119,7 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 3+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 226, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
@@ -9110,21 +9128,21 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
   }
   __pyx_L3:;
 
-  /* "fastforman.pyx":229
+  /* "fastforman.pyx":230
  * 
  * 
  *     return FRC(C,Neigh)             # <<<<<<<<<<<<<<
  * 
- * def compute_FRC_node(D,cutoff,dim):
+ * cpdef fill_info(dict D,int n):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = __pyx_f_10fastforman_FRC(__pyx_v_C, __pyx_v_Neigh, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 229, __pyx_L1_error)
+  __pyx_t_5 = __pyx_f_10fastforman_FRC(__pyx_v_C, __pyx_v_Neigh, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_r = __pyx_t_5;
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "fastforman.pyx":195
+  /* "fastforman.pyx":196
  *     return Neigh
  * 
  * def compute_FRC(D,cutoff,dim):             # <<<<<<<<<<<<<<
@@ -9152,8 +9170,303 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
   return __pyx_r;
 }
 
-/* "fastforman.pyx":231
+/* "fastforman.pyx":232
  *     return FRC(C,Neigh)
+ * 
+ * cpdef fill_info(dict D,int n):             # <<<<<<<<<<<<<<
+ *     cdef int k
+ *     for k in range(n):
+ */
+
+static PyObject *__pyx_pw_10fastforman_20fill_info(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyObject *__pyx_f_10fastforman_fill_info(PyObject *__pyx_v_D, int __pyx_v_n, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  int __pyx_v_k;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *__pyx_t_8 = NULL;
+  PyObject *__pyx_t_9 = NULL;
+  PyObject *__pyx_t_10 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("fill_info", 0);
+
+  /* "fastforman.pyx":234
+ * cpdef fill_info(dict D,int n):
+ *     cdef int k
+ *     for k in range(n):             # <<<<<<<<<<<<<<
+ *         try:
+ *             D[k]
+ */
+  __pyx_t_1 = __pyx_v_n;
+  __pyx_t_2 = __pyx_t_1;
+  for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
+    __pyx_v_k = __pyx_t_3;
+
+    /* "fastforman.pyx":235
+ *     cdef int k
+ *     for k in range(n):
+ *         try:             # <<<<<<<<<<<<<<
+ *             D[k]
+ *         except:
+ */
+    {
+      __Pyx_PyThreadState_declare
+      __Pyx_PyThreadState_assign
+      __Pyx_ExceptionSave(&__pyx_t_4, &__pyx_t_5, &__pyx_t_6);
+      __Pyx_XGOTREF(__pyx_t_4);
+      __Pyx_XGOTREF(__pyx_t_5);
+      __Pyx_XGOTREF(__pyx_t_6);
+      /*try:*/ {
+
+        /* "fastforman.pyx":236
+ *     for k in range(n):
+ *         try:
+ *             D[k]             # <<<<<<<<<<<<<<
+ *         except:
+ *             D[k]=0
+ */
+        if (unlikely(__pyx_v_D == Py_None)) {
+          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+          __PYX_ERR(0, 236, __pyx_L5_error)
+        }
+        __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_k); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 236, __pyx_L5_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __pyx_t_8 = __Pyx_PyDict_GetItem(__pyx_v_D, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 236, __pyx_L5_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+
+        /* "fastforman.pyx":235
+ *     cdef int k
+ *     for k in range(n):
+ *         try:             # <<<<<<<<<<<<<<
+ *             D[k]
+ *         except:
+ */
+      }
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      goto __pyx_L12_try_end;
+      __pyx_L5_error:;
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+
+      /* "fastforman.pyx":237
+ *         try:
+ *             D[k]
+ *         except:             # <<<<<<<<<<<<<<
+ *             D[k]=0
+ * 
+ */
+      /*except:*/ {
+        __Pyx_AddTraceback("fastforman.fill_info", __pyx_clineno, __pyx_lineno, __pyx_filename);
+        if (__Pyx_GetException(&__pyx_t_8, &__pyx_t_7, &__pyx_t_9) < 0) __PYX_ERR(0, 237, __pyx_L7_except_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_GOTREF(__pyx_t_7);
+        __Pyx_GOTREF(__pyx_t_9);
+
+        /* "fastforman.pyx":238
+ *             D[k]
+ *         except:
+ *             D[k]=0             # <<<<<<<<<<<<<<
+ * 
+ * def compute_FRC_node(D,cutoff,dim):
+ */
+        if (unlikely(__pyx_v_D == Py_None)) {
+          PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+          __PYX_ERR(0, 238, __pyx_L7_except_error)
+        }
+        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_k); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 238, __pyx_L7_except_error)
+        __Pyx_GOTREF(__pyx_t_10);
+        if (unlikely((PyDict_SetItem(__pyx_v_D, __pyx_t_10, __pyx_int_0) < 0))) __PYX_ERR(0, 238, __pyx_L7_except_error)
+        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+        goto __pyx_L6_exception_handled;
+      }
+      __pyx_L7_except_error:;
+
+      /* "fastforman.pyx":235
+ *     cdef int k
+ *     for k in range(n):
+ *         try:             # <<<<<<<<<<<<<<
+ *             D[k]
+ *         except:
+ */
+      __Pyx_XGIVEREF(__pyx_t_4);
+      __Pyx_XGIVEREF(__pyx_t_5);
+      __Pyx_XGIVEREF(__pyx_t_6);
+      __Pyx_ExceptionReset(__pyx_t_4, __pyx_t_5, __pyx_t_6);
+      goto __pyx_L1_error;
+      __pyx_L6_exception_handled:;
+      __Pyx_XGIVEREF(__pyx_t_4);
+      __Pyx_XGIVEREF(__pyx_t_5);
+      __Pyx_XGIVEREF(__pyx_t_6);
+      __Pyx_ExceptionReset(__pyx_t_4, __pyx_t_5, __pyx_t_6);
+      __pyx_L12_try_end:;
+    }
+  }
+
+  /* "fastforman.pyx":232
+ *     return FRC(C,Neigh)
+ * 
+ * cpdef fill_info(dict D,int n):             # <<<<<<<<<<<<<<
+ *     cdef int k
+ *     for k in range(n):
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_AddTraceback("fastforman.fill_info", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10fastforman_20fill_info(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_10fastforman_20fill_info = {"fill_info", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10fastforman_20fill_info, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10fastforman_20fill_info(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_D = 0;
+  int __pyx_v_n;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("fill_info (wrapper)", 0);
+  {
+    #if CYTHON_USE_MODULE_STATE
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_D,&__pyx_n_s_n,0};
+    #else
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_D,&__pyx_n_s_n,0};
+    #endif
+    PyObject* values[2] = {0,0};
+    if (__pyx_kwds) {
+      Py_ssize_t kw_args;
+      switch (__pyx_nargs) {
+        case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
+      switch (__pyx_nargs) {
+        case  0:
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_D)) != 0)) kw_args--;
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 232, __pyx_L3_error)
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_n)) != 0)) kw_args--;
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 232, __pyx_L3_error)
+        else {
+          __Pyx_RaiseArgtupleInvalid("fill_info", 1, 2, 2, 1); __PYX_ERR(0, 232, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t kwd_pos_args = __pyx_nargs;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "fill_info") < 0)) __PYX_ERR(0, 232, __pyx_L3_error)
+      }
+    } else if (unlikely(__pyx_nargs != 2)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+      values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
+    }
+    __pyx_v_D = ((PyObject*)values[0]);
+    __pyx_v_n = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_n == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 232, __pyx_L3_error)
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("fill_info", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 232, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("fastforman.fill_info", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_D), (&PyDict_Type), 1, "D", 1))) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10fastforman_19fill_info(__pyx_self, __pyx_v_D, __pyx_v_n);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10fastforman_19fill_info(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, int __pyx_v_n) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("fill_info", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_10fastforman_fill_info(__pyx_v_D, __pyx_v_n, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("fastforman.fill_info", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "fastforman.pyx":240
+ *             D[k]=0
  * 
  * def compute_FRC_node(D,cutoff,dim):             # <<<<<<<<<<<<<<
  *     """Computes the Forman-Ricci Curvature (FRC) for the nodes (up to dimension dim from the object provided).
@@ -9161,16 +9474,16 @@ static PyObject *__pyx_pf_10fastforman_17compute_FRC(CYTHON_UNUSED PyObject *__p
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10fastforman_20compute_FRC_node(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10fastforman_22compute_FRC_node(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_10fastforman_19compute_FRC_node, "Computes the Forman-Ricci Curvature (FRC) for the nodes (up to dimension dim from the object provided).\n   \n   Input: D, an object that can be:\n\n    - A dictionary in which the keys are enumerated from 0 to len(D)-1 and the values are the N-dimensional points. \n    - A nx.Graph object. The edge's attibutes `weight` will be considered.\n    - A np.ndarray object that represents a symmetric matrix of float numbers\n    cutoff: A float number for the threshold values for distance (if D is a dictionary), weights \n    (if D is a nx.Graph) of float values (if D is a np.matrix);\n\n    dim: integer, the maximum simplex dimension allowed to the computation.\n\n    Output:\n    a dictionary whose keys are the dimensions and the values are dictionaries with the FRC for each node.\n    If the node does not have curvature, the value information for the node will not be provided.");
-static PyMethodDef __pyx_mdef_10fastforman_20compute_FRC_node = {"compute_FRC_node", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10fastforman_20compute_FRC_node, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10fastforman_19compute_FRC_node};
-static PyObject *__pyx_pw_10fastforman_20compute_FRC_node(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_10fastforman_21compute_FRC_node, "Computes the Forman-Ricci Curvature (FRC) for the nodes (up to dimension dim from the object provided).\n   \n   Input: D, an object that can be:\n\n    - A dictionary in which the keys are enumerated from 0 to len(D)-1 and the values are the N-dimensional points. \n    - A nx.Graph object. The edge's attibutes `weight` will be considered.\n    - A np.ndarray object that represents a symmetric matrix of float numbers\n    cutoff: A float number for the threshold values for distance (if D is a dictionary), weights \n    (if D is a nx.Graph) of float values (if D is a np.matrix);\n\n    dim: integer, the maximum simplex dimension allowed to the computation.\n\n    Output:\n    a dictionary whose keys are the dimensions and the values are dictionaries with the FRC for each node.\n    If the node does not have curvature, the value information for the node will not be provided.");
+static PyMethodDef __pyx_mdef_10fastforman_22compute_FRC_node = {"compute_FRC_node", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10fastforman_22compute_FRC_node, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10fastforman_21compute_FRC_node};
+static PyObject *__pyx_pw_10fastforman_22compute_FRC_node(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9213,26 +9526,26 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_D)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_cutoff)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("compute_FRC_node", 1, 3, 3, 1); __PYX_ERR(0, 231, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("compute_FRC_node", 1, 3, 3, 1); __PYX_ERR(0, 240, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_dim)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("compute_FRC_node", 1, 3, 3, 2); __PYX_ERR(0, 231, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("compute_FRC_node", 1, 3, 3, 2); __PYX_ERR(0, 240, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "compute_FRC_node") < 0)) __PYX_ERR(0, 231, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "compute_FRC_node") < 0)) __PYX_ERR(0, 240, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -9247,20 +9560,20 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("compute_FRC_node", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 231, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("compute_FRC_node", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 240, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("fastforman.compute_FRC_node", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10fastforman_19compute_FRC_node(__pyx_self, __pyx_v_D, __pyx_v_cutoff, __pyx_v_dim);
+  __pyx_r = __pyx_pf_10fastforman_21compute_FRC_node(__pyx_self, __pyx_v_D, __pyx_v_cutoff, __pyx_v_dim);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, PyObject *__pyx_v_cutoff, PyObject *__pyx_v_dim) {
+static PyObject *__pyx_pf_10fastforman_21compute_FRC_node(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, PyObject *__pyx_v_cutoff, PyObject *__pyx_v_dim) {
   PyObject *__pyx_v_M = NULL;
   PyObject *__pyx_v_Neigh = NULL;
   PyObject *__pyx_v_C = NULL;
@@ -9284,36 +9597,36 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compute_FRC_node", 0);
 
-  /* "fastforman.pyx":248
+  /* "fastforman.pyx":257
  *     If the node does not have curvature, the value information for the node will not be provided."""
  * 
  *     if isinstance(D, np.ndarray):             # <<<<<<<<<<<<<<
  *         M=np.where(D<=cutoff,D,0)
  *         M=nx.from_numpy_array(M)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = PyObject_IsInstance(__pyx_v_D, __pyx_t_2); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_t_3 = PyObject_IsInstance(__pyx_v_D, __pyx_t_2); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
-    /* "fastforman.pyx":249
+    /* "fastforman.pyx":258
  * 
  *     if isinstance(D, np.ndarray):
  *         M=np.where(D<=cutoff,D,0)             # <<<<<<<<<<<<<<
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 249, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 258, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyObject_RichCompare(__pyx_v_D, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L1_error)
+    __pyx_t_1 = PyObject_RichCompare(__pyx_v_D, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -9331,23 +9644,23 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 3+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 249, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __pyx_v_M = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":250
+    /* "fastforman.pyx":259
  *     if isinstance(D, np.ndarray):
  *         M=np.where(D<=cutoff,D,0)
  *         M=nx.from_numpy_array(M)             # <<<<<<<<<<<<<<
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_nx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_nx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 259, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 259, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -9366,14 +9679,14 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
       PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_v_M};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 259, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":251
+    /* "fastforman.pyx":260
  *         M=np.where(D<=cutoff,D,0)
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}             # <<<<<<<<<<<<<<
@@ -9381,9 +9694,9 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
  * 
  */
     { /* enter inner scope */
-      __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 251, __pyx_L6_error)
+      __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 251, __pyx_L6_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 260, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_6 = NULL;
       __pyx_t_7 = 0;
@@ -9401,7 +9714,7 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
         PyObject *__pyx_callargs[1] = {__pyx_t_6, };
         __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 0+__pyx_t_7);
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L6_error)
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
@@ -9409,9 +9722,9 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
         __pyx_t_5 = __pyx_t_1; __Pyx_INCREF(__pyx_t_5); __pyx_t_8 = 0;
         __pyx_t_9 = NULL;
       } else {
-        __pyx_t_8 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 251, __pyx_L6_error)
+        __pyx_t_8 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 251, __pyx_L6_error)
+        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 260, __pyx_L6_error)
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       for (;;) {
@@ -9419,17 +9732,17 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
           if (likely(PyList_CheckExact(__pyx_t_5))) {
             if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_5)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 251, __pyx_L6_error)
+            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 260, __pyx_L6_error)
             #else
-            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L6_error)
+            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
           } else {
             if (__pyx_t_8 >= PyTuple_GET_SIZE(__pyx_t_5)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 251, __pyx_L6_error)
+            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 260, __pyx_L6_error)
             #else
-            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L6_error)
+            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
           }
@@ -9439,7 +9752,7 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 251, __pyx_L6_error)
+              else __PYX_ERR(0, 260, __pyx_L6_error)
             }
             break;
           }
@@ -9447,7 +9760,7 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
         }
         __Pyx_XDECREF_SET(__pyx_9genexpr16__pyx_v_i, __pyx_t_1);
         __pyx_t_1 = 0;
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 251, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_10 = NULL;
         __pyx_t_7 = 0;
@@ -9465,14 +9778,14 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
           PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_9genexpr16__pyx_v_i};
           __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L6_error)
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         }
-        __pyx_t_6 = PySet_New(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 251, __pyx_L6_error)
+        __pyx_t_6 = PySet_New(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(PyDict_SetItem(__pyx_t_2, (PyObject*)__pyx_9genexpr16__pyx_v_i, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 251, __pyx_L6_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_2, (PyObject*)__pyx_9genexpr16__pyx_v_i, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -9486,14 +9799,14 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
     __pyx_v_Neigh = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":252
+    /* "fastforman.pyx":261
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)             # <<<<<<<<<<<<<<
  * 
  *     elif isinstance(D,nx.Graph):
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 261, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -9511,14 +9824,14 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
       PyObject *__pyx_callargs[3] = {__pyx_t_6, __pyx_v_M, __pyx_v_dim};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 2+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __pyx_v_C = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":248
+    /* "fastforman.pyx":257
  *     If the node does not have curvature, the value information for the node will not be provided."""
  * 
  *     if isinstance(D, np.ndarray):             # <<<<<<<<<<<<<<
@@ -9528,33 +9841,33 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
     goto __pyx_L3;
   }
 
-  /* "fastforman.pyx":254
+  /* "fastforman.pyx":263
  *         C=cliques_networkx(M,dim)
  * 
  *     elif isinstance(D,nx.Graph):             # <<<<<<<<<<<<<<
  *         M=nx.to_numpy_array(D)
  *         M=np.where(M<=cutoff,M,0)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_Graph); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_Graph); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = PyObject_IsInstance(__pyx_v_D, __pyx_t_5); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_4 = PyObject_IsInstance(__pyx_v_D, __pyx_t_5); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__pyx_t_4 != 0);
   if (__pyx_t_3) {
 
-    /* "fastforman.pyx":255
+    /* "fastforman.pyx":264
  * 
  *     elif isinstance(D,nx.Graph):
  *         M=nx.to_numpy_array(D)             # <<<<<<<<<<<<<<
  *         M=np.where(M<=cutoff,M,0)
  *         M=nx.from_numpy_array(M)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_to_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 255, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_to_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 264, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -9573,26 +9886,26 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
       PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_D};
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 255, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 264, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
     __pyx_v_M = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":256
+    /* "fastforman.pyx":265
  *     elif isinstance(D,nx.Graph):
  *         M=nx.to_numpy_array(D)
  *         M=np.where(M<=cutoff,M,0)             # <<<<<<<<<<<<<<
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 265, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_where); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_where); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyObject_RichCompare(__pyx_v_M, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __pyx_t_6 = PyObject_RichCompare(__pyx_v_M, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 265, __pyx_L1_error)
     __pyx_t_1 = NULL;
     __pyx_t_7 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -9610,23 +9923,23 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 3+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 256, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 265, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":257
+    /* "fastforman.pyx":266
  *         M=nx.to_numpy_array(D)
  *         M=np.where(M<=cutoff,M,0)
  *         M=nx.from_numpy_array(M)             # <<<<<<<<<<<<<<
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 257, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 266, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -9645,14 +9958,14 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
       PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_M};
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 257, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 266, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":258
+    /* "fastforman.pyx":267
  *         M=np.where(M<=cutoff,M,0)
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}             # <<<<<<<<<<<<<<
@@ -9660,9 +9973,9 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
  * 
  */
     { /* enter inner scope */
-      __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 258, __pyx_L12_error)
+      __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 267, __pyx_L12_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L12_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 267, __pyx_L12_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = NULL;
       __pyx_t_7 = 0;
@@ -9680,7 +9993,7 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
         PyObject *__pyx_callargs[1] = {__pyx_t_1, };
         __pyx_t_6 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 0+__pyx_t_7);
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 258, __pyx_L12_error)
+        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 267, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       }
@@ -9688,9 +10001,9 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
         __pyx_t_2 = __pyx_t_6; __Pyx_INCREF(__pyx_t_2); __pyx_t_8 = 0;
         __pyx_t_9 = NULL;
       } else {
-        __pyx_t_8 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L12_error)
+        __pyx_t_8 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 267, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 258, __pyx_L12_error)
+        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 267, __pyx_L12_error)
       }
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       for (;;) {
@@ -9698,17 +10011,17 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
           if (likely(PyList_CheckExact(__pyx_t_2))) {
             if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_2)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_6 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 258, __pyx_L12_error)
+            __pyx_t_6 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 267, __pyx_L12_error)
             #else
-            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 258, __pyx_L12_error)
+            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 267, __pyx_L12_error)
             __Pyx_GOTREF(__pyx_t_6);
             #endif
           } else {
             if (__pyx_t_8 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 258, __pyx_L12_error)
+            __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 267, __pyx_L12_error)
             #else
-            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 258, __pyx_L12_error)
+            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 267, __pyx_L12_error)
             __Pyx_GOTREF(__pyx_t_6);
             #endif
           }
@@ -9718,7 +10031,7 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 258, __pyx_L12_error)
+              else __PYX_ERR(0, 267, __pyx_L12_error)
             }
             break;
           }
@@ -9726,7 +10039,7 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
         }
         __Pyx_XDECREF_SET(__pyx_9genexpr17__pyx_v_i, __pyx_t_6);
         __pyx_t_6 = 0;
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L12_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_1);
         __pyx_t_10 = NULL;
         __pyx_t_7 = 0;
@@ -9744,14 +10057,14 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
           PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_9genexpr17__pyx_v_i};
           __pyx_t_6 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 258, __pyx_L12_error)
+          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 267, __pyx_L12_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
-        __pyx_t_1 = PySet_New(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L12_error)
+        __pyx_t_1 = PySet_New(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(PyDict_SetItem(__pyx_t_5, (PyObject*)__pyx_9genexpr17__pyx_v_i, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 258, __pyx_L12_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_5, (PyObject*)__pyx_9genexpr17__pyx_v_i, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 267, __pyx_L12_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9765,14 +10078,14 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
     __pyx_v_Neigh = ((PyObject*)__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":259
+    /* "fastforman.pyx":268
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)             # <<<<<<<<<<<<<<
  * 
  *     else:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 259, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 268, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_1 = NULL;
     __pyx_t_7 = 0;
@@ -9790,14 +10103,14 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
       PyObject *__pyx_callargs[3] = {__pyx_t_1, __pyx_v_M, __pyx_v_dim};
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 2+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 259, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 268, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
     __pyx_v_C = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":254
+    /* "fastforman.pyx":263
  *         C=cliques_networkx(M,dim)
  * 
  *     elif isinstance(D,nx.Graph):             # <<<<<<<<<<<<<<
@@ -9807,7 +10120,7 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
     goto __pyx_L3;
   }
 
-  /* "fastforman.pyx":262
+  /* "fastforman.pyx":271
  * 
  *     else:
  *         Neigh=dict2neigh(D,cutoff)             # <<<<<<<<<<<<<<
@@ -9815,23 +10128,23 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
  * 
  */
   /*else*/ {
-    if (!(likely(PyDict_CheckExact(__pyx_v_D))||((__pyx_v_D) == Py_None) || __Pyx_RaiseUnexpectedTypeError("dict", __pyx_v_D))) __PYX_ERR(0, 262, __pyx_L1_error)
-    __pyx_t_11 = __pyx_PyFloat_AsDouble(__pyx_v_cutoff); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 262, __pyx_L1_error)
-    __pyx_t_5 = __pyx_f_10fastforman_dict2neigh(((PyObject*)__pyx_v_D), __pyx_t_11, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 262, __pyx_L1_error)
+    if (!(likely(PyDict_CheckExact(__pyx_v_D))||((__pyx_v_D) == Py_None) || __Pyx_RaiseUnexpectedTypeError("dict", __pyx_v_D))) __PYX_ERR(0, 271, __pyx_L1_error)
+    __pyx_t_11 = __pyx_PyFloat_AsDouble(__pyx_v_cutoff); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L1_error)
+    __pyx_t_5 = __pyx_f_10fastforman_dict2neigh(((PyObject*)__pyx_v_D), __pyx_t_11, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 271, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_v_Neigh = ((PyObject*)__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":263
+    /* "fastforman.pyx":272
  *     else:
  *         Neigh=dict2neigh(D,cutoff)
  *         C=cliques_gudhi(D.values(),cutoff,dim)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_gudhi); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_gudhi); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 272, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_D, __pyx_n_s_values); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 263, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_D, __pyx_n_s_values); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 272, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_10 = NULL;
     __pyx_t_7 = 0;
@@ -9849,7 +10162,7 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
       PyObject *__pyx_callargs[1] = {__pyx_t_10, };
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 0+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
@@ -9870,7 +10183,7 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 3+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 263, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 272, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
@@ -9879,7 +10192,7 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
   }
   __pyx_L3:;
 
-  /* "fastforman.pyx":266
+  /* "fastforman.pyx":275
  * 
  * 
  *     return FRC_node(C,Neigh)             # <<<<<<<<<<<<<<
@@ -9887,14 +10200,14 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = __pyx_f_10fastforman_FRC_node(__pyx_v_C, __pyx_v_Neigh, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 266, __pyx_L1_error)
+  __pyx_t_5 = __pyx_f_10fastforman_FRC_node(__pyx_v_C, __pyx_v_Neigh, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 275, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_r = __pyx_t_5;
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "fastforman.pyx":231
- *     return FRC(C,Neigh)
+  /* "fastforman.pyx":240
+ *             D[k]=0
  * 
  * def compute_FRC_node(D,cutoff,dim):             # <<<<<<<<<<<<<<
  *     """Computes the Forman-Ricci Curvature (FRC) for the nodes (up to dimension dim from the object provided).
@@ -9921,7 +10234,7 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "fastforman.pyx":269
+/* "fastforman.pyx":278
  * 
  * 
  * def compute_average_FRC(D,cutoff,dim):             # <<<<<<<<<<<<<<
@@ -9930,16 +10243,16 @@ static PyObject *__pyx_pf_10fastforman_19compute_FRC_node(CYTHON_UNUSED PyObject
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10fastforman_22compute_average_FRC(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10fastforman_24compute_average_FRC(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_10fastforman_21compute_average_FRC, "Computes the average Forman-Ricci Curvature (FRC) up to dimension dim from the object provided.\n    The average FRC is known as the sum of all local FRC divided by the number of d-cells.\n    \n    Input: D, an object that can be:\n\n    - A dictionary in which the keys are enumerated from 0 to len(D)-1 and the values are the N-dimensional points. \n    - A nx.Graph object. The edge's attibutes `weight` will be considered.\n    - A np.ndarray object that represents a symmetric matrix of float numbers\n    cutoff: A float number for the threshold values for distance (if D is a dictionary), weights \n    (if D is a nx.Graph) of float values (if D is a np.matrix);\n\n    dim: integer, the maximum simplex dimension allowed to the computation.\n    \n    Output:\n    a dictionary whose keys are the dimensions and the values are the average FRC for respective dimension.");
-static PyMethodDef __pyx_mdef_10fastforman_22compute_average_FRC = {"compute_average_FRC", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10fastforman_22compute_average_FRC, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10fastforman_21compute_average_FRC};
-static PyObject *__pyx_pw_10fastforman_22compute_average_FRC(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_10fastforman_23compute_average_FRC, "Computes the average Forman-Ricci Curvature (FRC) up to dimension dim from the object provided.\n    The average FRC is known as the sum of all local FRC divided by the number of d-cells.\n    \n    Input: D, an object that can be:\n\n    - A dictionary in which the keys are enumerated from 0 to len(D)-1 and the values are the N-dimensional points. \n    - A nx.Graph object. The edge's attibutes `weight` will be considered.\n    - A np.ndarray object that represents a symmetric matrix of float numbers\n    cutoff: A float number for the threshold values for distance (if D is a dictionary), weights \n    (if D is a nx.Graph) of float values (if D is a np.matrix);\n\n    dim: integer, the maximum simplex dimension allowed to the computation.\n    \n    Output:\n    a dictionary whose keys are the dimensions and the values are the average FRC for respective dimension.");
+static PyMethodDef __pyx_mdef_10fastforman_24compute_average_FRC = {"compute_average_FRC", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10fastforman_24compute_average_FRC, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10fastforman_23compute_average_FRC};
+static PyObject *__pyx_pw_10fastforman_24compute_average_FRC(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -9982,26 +10295,26 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_D)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 269, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_cutoff)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 269, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("compute_average_FRC", 1, 3, 3, 1); __PYX_ERR(0, 269, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("compute_average_FRC", 1, 3, 3, 1); __PYX_ERR(0, 278, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_dim)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 269, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("compute_average_FRC", 1, 3, 3, 2); __PYX_ERR(0, 269, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("compute_average_FRC", 1, 3, 3, 2); __PYX_ERR(0, 278, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "compute_average_FRC") < 0)) __PYX_ERR(0, 269, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "compute_average_FRC") < 0)) __PYX_ERR(0, 278, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -10016,20 +10329,20 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("compute_average_FRC", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 269, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("compute_average_FRC", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 278, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("fastforman.compute_average_FRC", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10fastforman_21compute_average_FRC(__pyx_self, __pyx_v_D, __pyx_v_cutoff, __pyx_v_dim);
+  __pyx_r = __pyx_pf_10fastforman_23compute_average_FRC(__pyx_self, __pyx_v_D, __pyx_v_cutoff, __pyx_v_dim);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, PyObject *__pyx_v_cutoff, PyObject *__pyx_v_dim) {
+static PyObject *__pyx_pf_10fastforman_23compute_average_FRC(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, PyObject *__pyx_v_cutoff, PyObject *__pyx_v_dim) {
   PyObject *__pyx_v_M = NULL;
   PyObject *__pyx_v_Neigh = NULL;
   PyObject *__pyx_v_C = NULL;
@@ -10053,36 +10366,36 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compute_average_FRC", 0);
 
-  /* "fastforman.pyx":286
+  /* "fastforman.pyx":295
  *     a dictionary whose keys are the dimensions and the values are the average FRC for respective dimension."""
  * 
  *     if isinstance(D, np.ndarray):             # <<<<<<<<<<<<<<
  *         M=np.where(D<=cutoff,D,0)
  *         M=nx.from_numpy_array(M)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = PyObject_IsInstance(__pyx_v_D, __pyx_t_2); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_3 = PyObject_IsInstance(__pyx_v_D, __pyx_t_2); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
-    /* "fastforman.pyx":287
+    /* "fastforman.pyx":296
  * 
  *     if isinstance(D, np.ndarray):
  *         M=np.where(D<=cutoff,D,0)             # <<<<<<<<<<<<<<
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 296, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 296, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyObject_RichCompare(__pyx_v_D, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
+    __pyx_t_1 = PyObject_RichCompare(__pyx_v_D, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 296, __pyx_L1_error)
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -10100,23 +10413,23 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 3+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 287, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 296, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __pyx_v_M = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":288
+    /* "fastforman.pyx":297
  *     if isinstance(D, np.ndarray):
  *         M=np.where(D<=cutoff,D,0)
  *         M=nx.from_numpy_array(M)             # <<<<<<<<<<<<<<
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_nx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 288, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_nx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 297, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -10135,14 +10448,14 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
       PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_v_M};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 288, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":289
+    /* "fastforman.pyx":298
  *         M=np.where(D<=cutoff,D,0)
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}             # <<<<<<<<<<<<<<
@@ -10150,9 +10463,9 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
  * 
  */
     { /* enter inner scope */
-      __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 289, __pyx_L6_error)
+      __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 298, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 289, __pyx_L6_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 298, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_6 = NULL;
       __pyx_t_7 = 0;
@@ -10170,7 +10483,7 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
         PyObject *__pyx_callargs[1] = {__pyx_t_6, };
         __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 0+__pyx_t_7);
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L6_error)
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
@@ -10178,9 +10491,9 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
         __pyx_t_5 = __pyx_t_1; __Pyx_INCREF(__pyx_t_5); __pyx_t_8 = 0;
         __pyx_t_9 = NULL;
       } else {
-        __pyx_t_8 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 289, __pyx_L6_error)
+        __pyx_t_8 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 298, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 289, __pyx_L6_error)
+        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 298, __pyx_L6_error)
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       for (;;) {
@@ -10188,17 +10501,17 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
           if (likely(PyList_CheckExact(__pyx_t_5))) {
             if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_5)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 289, __pyx_L6_error)
+            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 298, __pyx_L6_error)
             #else
-            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L6_error)
+            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
           } else {
             if (__pyx_t_8 >= PyTuple_GET_SIZE(__pyx_t_5)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 289, __pyx_L6_error)
+            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 298, __pyx_L6_error)
             #else
-            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L6_error)
+            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
           }
@@ -10208,7 +10521,7 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 289, __pyx_L6_error)
+              else __PYX_ERR(0, 298, __pyx_L6_error)
             }
             break;
           }
@@ -10216,7 +10529,7 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
         }
         __Pyx_XDECREF_SET(__pyx_9genexpr18__pyx_v_i, __pyx_t_1);
         __pyx_t_1 = 0;
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 289, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 298, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_10 = NULL;
         __pyx_t_7 = 0;
@@ -10234,14 +10547,14 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
           PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_9genexpr18__pyx_v_i};
           __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L6_error)
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         }
-        __pyx_t_6 = PySet_New(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 289, __pyx_L6_error)
+        __pyx_t_6 = PySet_New(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 298, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(PyDict_SetItem(__pyx_t_2, (PyObject*)__pyx_9genexpr18__pyx_v_i, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 289, __pyx_L6_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_2, (PyObject*)__pyx_9genexpr18__pyx_v_i, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 298, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -10255,14 +10568,14 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
     __pyx_v_Neigh = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":290
+    /* "fastforman.pyx":299
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)             # <<<<<<<<<<<<<<
  * 
  *     elif isinstance(D,nx.Graph):
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 290, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 299, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -10280,14 +10593,14 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
       PyObject *__pyx_callargs[3] = {__pyx_t_6, __pyx_v_M, __pyx_v_dim};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 2+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 290, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 299, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __pyx_v_C = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":286
+    /* "fastforman.pyx":295
  *     a dictionary whose keys are the dimensions and the values are the average FRC for respective dimension."""
  * 
  *     if isinstance(D, np.ndarray):             # <<<<<<<<<<<<<<
@@ -10297,33 +10610,33 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
     goto __pyx_L3;
   }
 
-  /* "fastforman.pyx":292
+  /* "fastforman.pyx":301
  *         C=cliques_networkx(M,dim)
  * 
  *     elif isinstance(D,nx.Graph):             # <<<<<<<<<<<<<<
  *         M=nx.to_numpy_array(D)
  *         M=np.where(M<=cutoff,M,0)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 292, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_Graph); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 292, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_Graph); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = PyObject_IsInstance(__pyx_v_D, __pyx_t_5); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 292, __pyx_L1_error)
+  __pyx_t_4 = PyObject_IsInstance(__pyx_v_D, __pyx_t_5); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__pyx_t_4 != 0);
   if (__pyx_t_3) {
 
-    /* "fastforman.pyx":293
+    /* "fastforman.pyx":302
  * 
  *     elif isinstance(D,nx.Graph):
  *         M=nx.to_numpy_array(D)             # <<<<<<<<<<<<<<
  *         M=np.where(M<=cutoff,M,0)
  *         M=nx.from_numpy_array(M)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 293, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_to_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 293, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_to_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -10342,26 +10655,26 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
       PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_D};
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 293, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 302, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
     __pyx_v_M = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":294
+    /* "fastforman.pyx":303
  *     elif isinstance(D,nx.Graph):
  *         M=nx.to_numpy_array(D)
  *         M=np.where(M<=cutoff,M,0)             # <<<<<<<<<<<<<<
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 294, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 303, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_where); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 294, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_where); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 303, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyObject_RichCompare(__pyx_v_M, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 294, __pyx_L1_error)
+    __pyx_t_6 = PyObject_RichCompare(__pyx_v_M, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 303, __pyx_L1_error)
     __pyx_t_1 = NULL;
     __pyx_t_7 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -10379,23 +10692,23 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 3+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 294, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 303, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":295
+    /* "fastforman.pyx":304
  *         M=nx.to_numpy_array(D)
  *         M=np.where(M<=cutoff,M,0)
  *         M=nx.from_numpy_array(M)             # <<<<<<<<<<<<<<
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 295, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 304, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 295, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 304, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -10414,14 +10727,14 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
       PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_M};
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 295, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 304, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":296
+    /* "fastforman.pyx":305
  *         M=np.where(M<=cutoff,M,0)
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}             # <<<<<<<<<<<<<<
@@ -10429,9 +10742,9 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
  * 
  */
     { /* enter inner scope */
-      __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 296, __pyx_L12_error)
+      __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 305, __pyx_L12_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 296, __pyx_L12_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 305, __pyx_L12_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = NULL;
       __pyx_t_7 = 0;
@@ -10449,7 +10762,7 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
         PyObject *__pyx_callargs[1] = {__pyx_t_1, };
         __pyx_t_6 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 0+__pyx_t_7);
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 296, __pyx_L12_error)
+        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 305, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       }
@@ -10457,9 +10770,9 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
         __pyx_t_2 = __pyx_t_6; __Pyx_INCREF(__pyx_t_2); __pyx_t_8 = 0;
         __pyx_t_9 = NULL;
       } else {
-        __pyx_t_8 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 296, __pyx_L12_error)
+        __pyx_t_8 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 305, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 296, __pyx_L12_error)
+        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 305, __pyx_L12_error)
       }
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       for (;;) {
@@ -10467,17 +10780,17 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
           if (likely(PyList_CheckExact(__pyx_t_2))) {
             if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_2)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_6 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 296, __pyx_L12_error)
+            __pyx_t_6 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 305, __pyx_L12_error)
             #else
-            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 296, __pyx_L12_error)
+            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 305, __pyx_L12_error)
             __Pyx_GOTREF(__pyx_t_6);
             #endif
           } else {
             if (__pyx_t_8 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 296, __pyx_L12_error)
+            __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 305, __pyx_L12_error)
             #else
-            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 296, __pyx_L12_error)
+            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 305, __pyx_L12_error)
             __Pyx_GOTREF(__pyx_t_6);
             #endif
           }
@@ -10487,7 +10800,7 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 296, __pyx_L12_error)
+              else __PYX_ERR(0, 305, __pyx_L12_error)
             }
             break;
           }
@@ -10495,7 +10808,7 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
         }
         __Pyx_XDECREF_SET(__pyx_9genexpr19__pyx_v_i, __pyx_t_6);
         __pyx_t_6 = 0;
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 296, __pyx_L12_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 305, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_1);
         __pyx_t_10 = NULL;
         __pyx_t_7 = 0;
@@ -10513,14 +10826,14 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
           PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_9genexpr19__pyx_v_i};
           __pyx_t_6 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 296, __pyx_L12_error)
+          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 305, __pyx_L12_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
-        __pyx_t_1 = PySet_New(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 296, __pyx_L12_error)
+        __pyx_t_1 = PySet_New(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 305, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(PyDict_SetItem(__pyx_t_5, (PyObject*)__pyx_9genexpr19__pyx_v_i, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 296, __pyx_L12_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_5, (PyObject*)__pyx_9genexpr19__pyx_v_i, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 305, __pyx_L12_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -10534,14 +10847,14 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
     __pyx_v_Neigh = ((PyObject*)__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":297
+    /* "fastforman.pyx":306
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)             # <<<<<<<<<<<<<<
  * 
  *     else:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 306, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_1 = NULL;
     __pyx_t_7 = 0;
@@ -10559,14 +10872,14 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
       PyObject *__pyx_callargs[3] = {__pyx_t_1, __pyx_v_M, __pyx_v_dim};
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 2+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 297, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 306, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
     __pyx_v_C = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":292
+    /* "fastforman.pyx":301
  *         C=cliques_networkx(M,dim)
  * 
  *     elif isinstance(D,nx.Graph):             # <<<<<<<<<<<<<<
@@ -10576,7 +10889,7 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
     goto __pyx_L3;
   }
 
-  /* "fastforman.pyx":300
+  /* "fastforman.pyx":309
  * 
  *     else:
  *         Neigh=dict2neigh(D,cutoff)             # <<<<<<<<<<<<<<
@@ -10584,23 +10897,23 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
  * 
  */
   /*else*/ {
-    if (!(likely(PyDict_CheckExact(__pyx_v_D))||((__pyx_v_D) == Py_None) || __Pyx_RaiseUnexpectedTypeError("dict", __pyx_v_D))) __PYX_ERR(0, 300, __pyx_L1_error)
-    __pyx_t_11 = __pyx_PyFloat_AsDouble(__pyx_v_cutoff); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 300, __pyx_L1_error)
-    __pyx_t_5 = __pyx_f_10fastforman_dict2neigh(((PyObject*)__pyx_v_D), __pyx_t_11, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 300, __pyx_L1_error)
+    if (!(likely(PyDict_CheckExact(__pyx_v_D))||((__pyx_v_D) == Py_None) || __Pyx_RaiseUnexpectedTypeError("dict", __pyx_v_D))) __PYX_ERR(0, 309, __pyx_L1_error)
+    __pyx_t_11 = __pyx_PyFloat_AsDouble(__pyx_v_cutoff); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 309, __pyx_L1_error)
+    __pyx_t_5 = __pyx_f_10fastforman_dict2neigh(((PyObject*)__pyx_v_D), __pyx_t_11, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 309, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_v_Neigh = ((PyObject*)__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":301
+    /* "fastforman.pyx":310
  *     else:
  *         Neigh=dict2neigh(D,cutoff)
  *         C=cliques_gudhi(D.values(),cutoff,dim)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_gudhi); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 301, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_gudhi); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_D, __pyx_n_s_values); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 301, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_D, __pyx_n_s_values); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_10 = NULL;
     __pyx_t_7 = 0;
@@ -10618,7 +10931,7 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
       PyObject *__pyx_callargs[1] = {__pyx_t_10, };
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 0+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 301, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
@@ -10639,7 +10952,7 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 3+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 301, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 310, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
@@ -10648,7 +10961,7 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
   }
   __pyx_L3:;
 
-  /* "fastforman.pyx":305
+  /* "fastforman.pyx":314
  * 
  * 
  *     return compute_avg(C,Neigh,dim)             # <<<<<<<<<<<<<<
@@ -10656,14 +10969,14 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
  * def compute_FRC_frequency(D,cutoff,dim):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_dim); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 305, __pyx_L1_error)
-  __pyx_t_5 = __pyx_f_10fastforman_compute_avg(__pyx_v_C, __pyx_v_Neigh, __pyx_t_7, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 305, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_dim); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 314, __pyx_L1_error)
+  __pyx_t_5 = __pyx_f_10fastforman_compute_avg(__pyx_v_C, __pyx_v_Neigh, __pyx_t_7, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 314, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_r = __pyx_t_5;
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "fastforman.pyx":269
+  /* "fastforman.pyx":278
  * 
  * 
  * def compute_average_FRC(D,cutoff,dim):             # <<<<<<<<<<<<<<
@@ -10691,7 +11004,7 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
   return __pyx_r;
 }
 
-/* "fastforman.pyx":307
+/* "fastforman.pyx":316
  *     return compute_avg(C,Neigh,dim)
  * 
  * def compute_FRC_frequency(D,cutoff,dim):             # <<<<<<<<<<<<<<
@@ -10700,16 +11013,16 @@ static PyObject *__pyx_pf_10fastforman_21compute_average_FRC(CYTHON_UNUSED PyObj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10fastforman_24compute_FRC_frequency(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10fastforman_26compute_FRC_frequency(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_10fastforman_23compute_FRC_frequency, "Computes the frequency of Forman-Ricci Curvature (FRC) values up to dimension dim from the object provided.\n  \n   Input: D, an object that can be:\n\n    - A dictionary in which the keys are enumerated from 0 to len(D)-1 and the values are the N-dimensional points. \n    - A nx.Graph object. The edge's attibutes `weight` will be considered.\n    - A np.ndarray object that represents a symmetric matrix of float numbers\n    cutoff: A float number for the threshold values for distance (if D is a dictionary), weights \n    (if D is a nx.Graph) of float values (if D is a np.matrix);\n\n    dim: integer, the maximum simplex dimension allowed to the computation.\n\n    Output:\n    a dictionary whose keys are the dimensions and the values are the average FRC for respective dimension.");
-static PyMethodDef __pyx_mdef_10fastforman_24compute_FRC_frequency = {"compute_FRC_frequency", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10fastforman_24compute_FRC_frequency, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10fastforman_23compute_FRC_frequency};
-static PyObject *__pyx_pw_10fastforman_24compute_FRC_frequency(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_10fastforman_25compute_FRC_frequency, "Computes the frequency of Forman-Ricci Curvature (FRC) values up to dimension dim from the object provided.\n  \n   Input: D, an object that can be:\n\n    - A dictionary in which the keys are enumerated from 0 to len(D)-1 and the values are the N-dimensional points. \n    - A nx.Graph object. The edge's attibutes `weight` will be considered.\n    - A np.ndarray object that represents a symmetric matrix of float numbers\n    cutoff: A float number for the threshold values for distance (if D is a dictionary), weights \n    (if D is a nx.Graph) of float values (if D is a np.matrix);\n\n    dim: integer, the maximum simplex dimension allowed to the computation.\n\n    Output:\n    a dictionary whose keys are the dimensions and the values are the average FRC for respective dimension.");
+static PyMethodDef __pyx_mdef_10fastforman_26compute_FRC_frequency = {"compute_FRC_frequency", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10fastforman_26compute_FRC_frequency, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10fastforman_25compute_FRC_frequency};
+static PyObject *__pyx_pw_10fastforman_26compute_FRC_frequency(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -10752,26 +11065,26 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_D)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 307, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 316, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_cutoff)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 307, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 316, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("compute_FRC_frequency", 1, 3, 3, 1); __PYX_ERR(0, 307, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("compute_FRC_frequency", 1, 3, 3, 1); __PYX_ERR(0, 316, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_dim)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 307, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 316, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("compute_FRC_frequency", 1, 3, 3, 2); __PYX_ERR(0, 307, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("compute_FRC_frequency", 1, 3, 3, 2); __PYX_ERR(0, 316, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "compute_FRC_frequency") < 0)) __PYX_ERR(0, 307, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "compute_FRC_frequency") < 0)) __PYX_ERR(0, 316, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -10786,20 +11099,20 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("compute_FRC_frequency", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 307, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("compute_FRC_frequency", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 316, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("fastforman.compute_FRC_frequency", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10fastforman_23compute_FRC_frequency(__pyx_self, __pyx_v_D, __pyx_v_cutoff, __pyx_v_dim);
+  __pyx_r = __pyx_pf_10fastforman_25compute_FRC_frequency(__pyx_self, __pyx_v_D, __pyx_v_cutoff, __pyx_v_dim);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, PyObject *__pyx_v_cutoff, PyObject *__pyx_v_dim) {
+static PyObject *__pyx_pf_10fastforman_25compute_FRC_frequency(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_D, PyObject *__pyx_v_cutoff, PyObject *__pyx_v_dim) {
   PyObject *__pyx_v_M = NULL;
   PyObject *__pyx_v_Neigh = NULL;
   PyObject *__pyx_v_C = NULL;
@@ -10824,36 +11137,36 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compute_FRC_frequency", 0);
 
-  /* "fastforman.pyx":324
+  /* "fastforman.pyx":333
  * 
  * 
  *     if isinstance(D, np.ndarray):             # <<<<<<<<<<<<<<
  *         M=np.where(D<=cutoff,D,0)
  *         M=nx.from_numpy_array(M)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 324, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 324, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ndarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 333, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = PyObject_IsInstance(__pyx_v_D, __pyx_t_2); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 324, __pyx_L1_error)
+  __pyx_t_3 = PyObject_IsInstance(__pyx_v_D, __pyx_t_2); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 333, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
-    /* "fastforman.pyx":325
+    /* "fastforman.pyx":334
  * 
  *     if isinstance(D, np.ndarray):
  *         M=np.where(D<=cutoff,D,0)             # <<<<<<<<<<<<<<
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 334, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 325, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 334, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyObject_RichCompare(__pyx_v_D, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+    __pyx_t_1 = PyObject_RichCompare(__pyx_v_D, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 334, __pyx_L1_error)
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -10871,23 +11184,23 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 3+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 325, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 334, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __pyx_v_M = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":326
+    /* "fastforman.pyx":335
  *     if isinstance(D, np.ndarray):
  *         M=np.where(D<=cutoff,D,0)
  *         M=nx.from_numpy_array(M)             # <<<<<<<<<<<<<<
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_nx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 326, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_nx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 335, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 335, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -10906,14 +11219,14 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
       PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_v_M};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 335, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":327
+    /* "fastforman.pyx":336
  *         M=np.where(D<=cutoff,D,0)
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}             # <<<<<<<<<<<<<<
@@ -10921,9 +11234,9 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
  * 
  */
     { /* enter inner scope */
-      __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 327, __pyx_L6_error)
+      __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 336, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 327, __pyx_L6_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 336, __pyx_L6_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_6 = NULL;
       __pyx_t_7 = 0;
@@ -10941,7 +11254,7 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
         PyObject *__pyx_callargs[1] = {__pyx_t_6, };
         __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 0+__pyx_t_7);
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L6_error)
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
@@ -10949,9 +11262,9 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
         __pyx_t_5 = __pyx_t_1; __Pyx_INCREF(__pyx_t_5); __pyx_t_8 = 0;
         __pyx_t_9 = NULL;
       } else {
-        __pyx_t_8 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 327, __pyx_L6_error)
+        __pyx_t_8 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 336, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 327, __pyx_L6_error)
+        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 336, __pyx_L6_error)
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       for (;;) {
@@ -10959,17 +11272,17 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
           if (likely(PyList_CheckExact(__pyx_t_5))) {
             if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_5)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 327, __pyx_L6_error)
+            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 336, __pyx_L6_error)
             #else
-            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L6_error)
+            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
           } else {
             if (__pyx_t_8 >= PyTuple_GET_SIZE(__pyx_t_5)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 327, __pyx_L6_error)
+            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_1); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 336, __pyx_L6_error)
             #else
-            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L6_error)
+            __pyx_t_1 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L6_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
           }
@@ -10979,7 +11292,7 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 327, __pyx_L6_error)
+              else __PYX_ERR(0, 336, __pyx_L6_error)
             }
             break;
           }
@@ -10987,7 +11300,7 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
         }
         __Pyx_XDECREF_SET(__pyx_9genexpr20__pyx_v_i, __pyx_t_1);
         __pyx_t_1 = 0;
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 327, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 336, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_10 = NULL;
         __pyx_t_7 = 0;
@@ -11005,14 +11318,14 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
           PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_9genexpr20__pyx_v_i};
           __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L6_error)
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         }
-        __pyx_t_6 = PySet_New(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 327, __pyx_L6_error)
+        __pyx_t_6 = PySet_New(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 336, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(PyDict_SetItem(__pyx_t_2, (PyObject*)__pyx_9genexpr20__pyx_v_i, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 327, __pyx_L6_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_2, (PyObject*)__pyx_9genexpr20__pyx_v_i, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 336, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -11026,14 +11339,14 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
     __pyx_v_Neigh = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":328
+    /* "fastforman.pyx":337
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)             # <<<<<<<<<<<<<<
  * 
  *     elif isinstance(D,nx.Graph):
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 328, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 337, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -11051,14 +11364,14 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
       PyObject *__pyx_callargs[3] = {__pyx_t_6, __pyx_v_M, __pyx_v_dim};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 2+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 328, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 337, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __pyx_v_C = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "fastforman.pyx":324
+    /* "fastforman.pyx":333
  * 
  * 
  *     if isinstance(D, np.ndarray):             # <<<<<<<<<<<<<<
@@ -11068,33 +11381,33 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
     goto __pyx_L3;
   }
 
-  /* "fastforman.pyx":330
+  /* "fastforman.pyx":339
  *         C=cliques_networkx(M,dim)
  * 
  *     elif isinstance(D,nx.Graph):             # <<<<<<<<<<<<<<
  *         M=nx.to_numpy_array(D)
  *         M=np.where(M<=cutoff,M,0)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 330, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 339, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_Graph); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 330, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_Graph); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 339, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = PyObject_IsInstance(__pyx_v_D, __pyx_t_5); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 330, __pyx_L1_error)
+  __pyx_t_4 = PyObject_IsInstance(__pyx_v_D, __pyx_t_5); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 339, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__pyx_t_4 != 0);
   if (__pyx_t_3) {
 
-    /* "fastforman.pyx":331
+    /* "fastforman.pyx":340
  * 
  *     elif isinstance(D,nx.Graph):
  *         M=nx.to_numpy_array(D)             # <<<<<<<<<<<<<<
  *         M=np.where(M<=cutoff,M,0)
  *         M=nx.from_numpy_array(M)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 331, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 340, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_to_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 331, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_to_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 340, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -11113,26 +11426,26 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
       PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_D};
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 331, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 340, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
     __pyx_v_M = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":332
+    /* "fastforman.pyx":341
  *     elif isinstance(D,nx.Graph):
  *         M=nx.to_numpy_array(D)
  *         M=np.where(M<=cutoff,M,0)             # <<<<<<<<<<<<<<
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 341, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_where); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_where); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 341, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyObject_RichCompare(__pyx_v_M, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_6 = PyObject_RichCompare(__pyx_v_M, __pyx_v_cutoff, Py_LE); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 341, __pyx_L1_error)
     __pyx_t_1 = NULL;
     __pyx_t_7 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -11150,23 +11463,23 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 3+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 332, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 341, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":333
+    /* "fastforman.pyx":342
  *         M=nx.to_numpy_array(D)
  *         M=np.where(M<=cutoff,M,0)
  *         M=nx.from_numpy_array(M)             # <<<<<<<<<<<<<<
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 333, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 342, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 333, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_from_numpy_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 342, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -11185,14 +11498,14 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
       PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_M};
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 333, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 342, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
     __Pyx_DECREF_SET(__pyx_v_M, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":334
+    /* "fastforman.pyx":343
  *         M=np.where(M<=cutoff,M,0)
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}             # <<<<<<<<<<<<<<
@@ -11200,9 +11513,9 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
  * 
  */
     { /* enter inner scope */
-      __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 334, __pyx_L12_error)
+      __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 343, __pyx_L12_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 334, __pyx_L12_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_nodes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 343, __pyx_L12_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = NULL;
       __pyx_t_7 = 0;
@@ -11220,7 +11533,7 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
         PyObject *__pyx_callargs[1] = {__pyx_t_1, };
         __pyx_t_6 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 0+__pyx_t_7);
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 334, __pyx_L12_error)
+        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 343, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       }
@@ -11228,9 +11541,9 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
         __pyx_t_2 = __pyx_t_6; __Pyx_INCREF(__pyx_t_2); __pyx_t_8 = 0;
         __pyx_t_9 = NULL;
       } else {
-        __pyx_t_8 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 334, __pyx_L12_error)
+        __pyx_t_8 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 343, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 334, __pyx_L12_error)
+        __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 343, __pyx_L12_error)
       }
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       for (;;) {
@@ -11238,17 +11551,17 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
           if (likely(PyList_CheckExact(__pyx_t_2))) {
             if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_2)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_6 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 334, __pyx_L12_error)
+            __pyx_t_6 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 343, __pyx_L12_error)
             #else
-            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 334, __pyx_L12_error)
+            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 343, __pyx_L12_error)
             __Pyx_GOTREF(__pyx_t_6);
             #endif
           } else {
             if (__pyx_t_8 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 334, __pyx_L12_error)
+            __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_8); __Pyx_INCREF(__pyx_t_6); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(0, 343, __pyx_L12_error)
             #else
-            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 334, __pyx_L12_error)
+            __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 343, __pyx_L12_error)
             __Pyx_GOTREF(__pyx_t_6);
             #endif
           }
@@ -11258,7 +11571,7 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 334, __pyx_L12_error)
+              else __PYX_ERR(0, 343, __pyx_L12_error)
             }
             break;
           }
@@ -11266,7 +11579,7 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
         }
         __Pyx_XDECREF_SET(__pyx_9genexpr21__pyx_v_i, __pyx_t_6);
         __pyx_t_6 = 0;
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 334, __pyx_L12_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_M, __pyx_n_s_neighbors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 343, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_1);
         __pyx_t_10 = NULL;
         __pyx_t_7 = 0;
@@ -11284,14 +11597,14 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
           PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_9genexpr21__pyx_v_i};
           __pyx_t_6 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 334, __pyx_L12_error)
+          if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 343, __pyx_L12_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
-        __pyx_t_1 = PySet_New(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 334, __pyx_L12_error)
+        __pyx_t_1 = PySet_New(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 343, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(PyDict_SetItem(__pyx_t_5, (PyObject*)__pyx_9genexpr21__pyx_v_i, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 334, __pyx_L12_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_5, (PyObject*)__pyx_9genexpr21__pyx_v_i, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 343, __pyx_L12_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -11305,14 +11618,14 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
     __pyx_v_Neigh = ((PyObject*)__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":335
+    /* "fastforman.pyx":344
  *         M=nx.from_numpy_array(M)
  *         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
  *         C=cliques_networkx(M,dim)             # <<<<<<<<<<<<<<
  * 
  *     else:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 335, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_networkx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 344, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_1 = NULL;
     __pyx_t_7 = 0;
@@ -11330,14 +11643,14 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
       PyObject *__pyx_callargs[3] = {__pyx_t_1, __pyx_v_M, __pyx_v_dim};
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 2+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 335, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 344, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
     __pyx_v_C = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":330
+    /* "fastforman.pyx":339
  *         C=cliques_networkx(M,dim)
  * 
  *     elif isinstance(D,nx.Graph):             # <<<<<<<<<<<<<<
@@ -11347,7 +11660,7 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
     goto __pyx_L3;
   }
 
-  /* "fastforman.pyx":338
+  /* "fastforman.pyx":347
  * 
  *     else:
  *         Neigh=dict2neigh(D,cutoff)             # <<<<<<<<<<<<<<
@@ -11355,23 +11668,23 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
  * 
  */
   /*else*/ {
-    if (!(likely(PyDict_CheckExact(__pyx_v_D))||((__pyx_v_D) == Py_None) || __Pyx_RaiseUnexpectedTypeError("dict", __pyx_v_D))) __PYX_ERR(0, 338, __pyx_L1_error)
-    __pyx_t_11 = __pyx_PyFloat_AsDouble(__pyx_v_cutoff); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 338, __pyx_L1_error)
-    __pyx_t_5 = __pyx_f_10fastforman_dict2neigh(((PyObject*)__pyx_v_D), __pyx_t_11, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 338, __pyx_L1_error)
+    if (!(likely(PyDict_CheckExact(__pyx_v_D))||((__pyx_v_D) == Py_None) || __Pyx_RaiseUnexpectedTypeError("dict", __pyx_v_D))) __PYX_ERR(0, 347, __pyx_L1_error)
+    __pyx_t_11 = __pyx_PyFloat_AsDouble(__pyx_v_cutoff); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 347, __pyx_L1_error)
+    __pyx_t_5 = __pyx_f_10fastforman_dict2neigh(((PyObject*)__pyx_v_D), __pyx_t_11, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 347, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_v_Neigh = ((PyObject*)__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastforman.pyx":339
+    /* "fastforman.pyx":348
  *     else:
  *         Neigh=dict2neigh(D,cutoff)
  *         C=cliques_gudhi(D.values(),cutoff,dim)             # <<<<<<<<<<<<<<
  * 
  *     n=len(D)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_gudhi); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 339, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_cliques_gudhi); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 348, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_D, __pyx_n_s_values); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 339, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_D, __pyx_n_s_values); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 348, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_10 = NULL;
     __pyx_t_7 = 0;
@@ -11389,7 +11702,7 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
       PyObject *__pyx_callargs[1] = {__pyx_t_10, };
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_7, 0+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
@@ -11410,7 +11723,7 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
       __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_7, 3+__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 339, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 348, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
@@ -11419,30 +11732,30 @@ static PyObject *__pyx_pf_10fastforman_23compute_FRC_frequency(CYTHON_UNUSED PyO
   }
   __pyx_L3:;
 
-  /* "fastforman.pyx":341
+  /* "fastforman.pyx":350
  *         C=cliques_gudhi(D.values(),cutoff,dim)
  * 
  *     n=len(D)             # <<<<<<<<<<<<<<
  * 
  *     return frequency(C,Neigh,dim,n)
  */
-  __pyx_t_8 = PyObject_Length(__pyx_v_D); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 341, __pyx_L1_error)
+  __pyx_t_8 = PyObject_Length(__pyx_v_D); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 350, __pyx_L1_error)
   __pyx_v_n = __pyx_t_8;
 
-  /* "fastforman.pyx":343
+  /* "fastforman.pyx":352
  *     n=len(D)
  * 
  *     return frequency(C,Neigh,dim,n)             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_dim); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 343, __pyx_L1_error)
-  __pyx_t_5 = __pyx_f_10fastforman_frequency(__pyx_v_C, __pyx_v_Neigh, __pyx_t_7, __pyx_v_n, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 343, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_dim); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_5 = __pyx_f_10fastforman_frequency(__pyx_v_C, __pyx_v_Neigh, __pyx_t_7, __pyx_v_n, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 352, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_r = __pyx_t_5;
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "fastforman.pyx":307
+  /* "fastforman.pyx":316
  *     return compute_avg(C,Neigh,dim)
  * 
  * def compute_FRC_frequency(D,cutoff,dim):             # <<<<<<<<<<<<<<
@@ -12686,7 +12999,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, __pyx_k_RipsComplex, sizeof(__pyx_k_RipsComplex), 0, 0, 1, 1},
   {0, __pyx_k_Rips_simplex_tree_sample, sizeof(__pyx_k_Rips_simplex_tree_sample), 0, 0, 1, 1},
   {0, __pyx_k__2, sizeof(__pyx_k__2), 0, 0, 1, 1},
-  {0, __pyx_k__24, sizeof(__pyx_k__24), 0, 0, 1, 1},
+  {0, __pyx_k__26, sizeof(__pyx_k__26), 0, 0, 1, 1},
   {0, __pyx_k__3, sizeof(__pyx_k__3), 0, 1, 0, 0},
   {0, __pyx_k_add, sizeof(__pyx_k_add), 0, 0, 1, 1},
   {0, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
@@ -12719,6 +13032,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, __pyx_k_f, sizeof(__pyx_k_f), 0, 0, 1, 1},
   {0, __pyx_k_fastforman, sizeof(__pyx_k_fastforman), 0, 0, 1, 1},
   {0, __pyx_k_fastforman_pyx, sizeof(__pyx_k_fastforman_pyx), 0, 0, 1, 0},
+  {0, __pyx_k_fill_info, sizeof(__pyx_k_fill_info), 0, 0, 1, 1},
   {0, __pyx_k_find_cliques, sizeof(__pyx_k_find_cliques), 0, 0, 1, 1},
   {0, __pyx_k_frequency, sizeof(__pyx_k_frequency), 0, 0, 1, 1},
   {0, __pyx_k_from_numpy_array, sizeof(__pyx_k_from_numpy_array), 0, 0, 1, 1},
@@ -12781,7 +13095,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_RipsComplex, __pyx_k_RipsComplex, sizeof(__pyx_k_RipsComplex), 0, 0, 1, 1},
   {&__pyx_n_s_Rips_simplex_tree_sample, __pyx_k_Rips_simplex_tree_sample, sizeof(__pyx_k_Rips_simplex_tree_sample), 0, 0, 1, 1},
   {&__pyx_n_s__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 0, 1, 1},
-  {&__pyx_n_s__24, __pyx_k__24, sizeof(__pyx_k__24), 0, 0, 1, 1},
+  {&__pyx_n_s__26, __pyx_k__26, sizeof(__pyx_k__26), 0, 0, 1, 1},
   {&__pyx_kp_u__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 1, 0, 0},
   {&__pyx_n_s_add, __pyx_k_add, sizeof(__pyx_k_add), 0, 0, 1, 1},
   {&__pyx_n_s_args, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
@@ -12814,6 +13128,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_f, __pyx_k_f, sizeof(__pyx_k_f), 0, 0, 1, 1},
   {&__pyx_n_s_fastforman, __pyx_k_fastforman, sizeof(__pyx_k_fastforman), 0, 0, 1, 1},
   {&__pyx_kp_s_fastforman_pyx, __pyx_k_fastforman_pyx, sizeof(__pyx_k_fastforman_pyx), 0, 0, 1, 0},
+  {&__pyx_n_s_fill_info, __pyx_k_fill_info, sizeof(__pyx_k_fill_info), 0, 0, 1, 1},
   {&__pyx_n_s_find_cliques, __pyx_k_find_cliques, sizeof(__pyx_k_find_cliques), 0, 0, 1, 1},
   {&__pyx_n_s_frequency, __pyx_k_frequency, sizeof(__pyx_k_frequency), 0, 0, 1, 1},
   {&__pyx_n_s_from_numpy_array, __pyx_k_from_numpy_array, sizeof(__pyx_k_from_numpy_array), 0, 0, 1, 1},
@@ -12959,59 +13274,71 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__14);
   __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastforman_pyx, __pyx_n_s_compute_avg, 162, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 162, __pyx_L1_error)
 
-  /* "fastforman.pyx":182
- *     return output
+  /* "fastforman.pyx":183
+ * 
  * 
  * cpdef dict dict2neigh(dict D,double cutoff):             # <<<<<<<<<<<<<<
  *     cdef int i,x,y
  *     cdef double val
  */
-  __pyx_tuple__16 = PyTuple_Pack(2, __pyx_n_s_D, __pyx_n_s_cutoff); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(2, __pyx_n_s_D, __pyx_n_s_cutoff); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastforman_pyx, __pyx_n_s_dict2neigh, 182, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastforman_pyx, __pyx_n_s_dict2neigh, 183, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 183, __pyx_L1_error)
 
-  /* "fastforman.pyx":195
+  /* "fastforman.pyx":196
  *     return Neigh
  * 
  * def compute_FRC(D,cutoff,dim):             # <<<<<<<<<<<<<<
  *     """Computes the Forman-Ricci Curvature (FRC) up to dimension dim from the object provided.
  * 
  */
-  __pyx_tuple__18 = PyTuple_Pack(8, __pyx_n_s_D, __pyx_n_s_cutoff, __pyx_n_s_dim, __pyx_n_s_M, __pyx_n_s_Neigh, __pyx_n_s_C, __pyx_n_s_i, __pyx_n_s_i); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(8, __pyx_n_s_D, __pyx_n_s_cutoff, __pyx_n_s_dim, __pyx_n_s_M, __pyx_n_s_Neigh, __pyx_n_s_C, __pyx_n_s_i, __pyx_n_s_i); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastforman_pyx, __pyx_n_s_compute_FRC, 195, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastforman_pyx, __pyx_n_s_compute_FRC, 196, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 196, __pyx_L1_error)
 
-  /* "fastforman.pyx":231
+  /* "fastforman.pyx":232
  *     return FRC(C,Neigh)
+ * 
+ * cpdef fill_info(dict D,int n):             # <<<<<<<<<<<<<<
+ *     cdef int k
+ *     for k in range(n):
+ */
+  __pyx_tuple__20 = PyTuple_Pack(2, __pyx_n_s_D, __pyx_n_s_n); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__20);
+  __Pyx_GIVEREF(__pyx_tuple__20);
+  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastforman_pyx, __pyx_n_s_fill_info, 232, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 232, __pyx_L1_error)
+
+  /* "fastforman.pyx":240
+ *             D[k]=0
  * 
  * def compute_FRC_node(D,cutoff,dim):             # <<<<<<<<<<<<<<
  *     """Computes the Forman-Ricci Curvature (FRC) for the nodes (up to dimension dim from the object provided).
  * 
  */
-  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastforman_pyx, __pyx_n_s_compute_FRC_node, 231, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 231, __pyx_L1_error)
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastforman_pyx, __pyx_n_s_compute_FRC_node, 240, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 240, __pyx_L1_error)
 
-  /* "fastforman.pyx":269
+  /* "fastforman.pyx":278
  * 
  * 
  * def compute_average_FRC(D,cutoff,dim):             # <<<<<<<<<<<<<<
  *     """Computes the average Forman-Ricci Curvature (FRC) up to dimension dim from the object provided.
  *     The average FRC is known as the sum of all local FRC divided by the number of d-cells.
  */
-  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastforman_pyx, __pyx_n_s_compute_average_FRC, 269, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastforman_pyx, __pyx_n_s_compute_average_FRC, 278, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 278, __pyx_L1_error)
 
-  /* "fastforman.pyx":307
+  /* "fastforman.pyx":316
  *     return compute_avg(C,Neigh,dim)
  * 
  * def compute_FRC_frequency(D,cutoff,dim):             # <<<<<<<<<<<<<<
  *     """Computes the frequency of Forman-Ricci Curvature (FRC) values up to dimension dim from the object provided.
  * 
  */
-  __pyx_tuple__22 = PyTuple_Pack(9, __pyx_n_s_D, __pyx_n_s_cutoff, __pyx_n_s_dim, __pyx_n_s_M, __pyx_n_s_Neigh, __pyx_n_s_C, __pyx_n_s_n, __pyx_n_s_i, __pyx_n_s_i); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 307, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__22);
-  __Pyx_GIVEREF(__pyx_tuple__22);
-  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastforman_pyx, __pyx_n_s_compute_FRC_frequency, 307, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 307, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(9, __pyx_n_s_D, __pyx_n_s_cutoff, __pyx_n_s_dim, __pyx_n_s_M, __pyx_n_s_Neigh, __pyx_n_s_C, __pyx_n_s_n, __pyx_n_s_i, __pyx_n_s_i); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 316, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__24);
+  __Pyx_GIVEREF(__pyx_tuple__24);
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastforman_pyx, __pyx_n_s_compute_FRC_frequency, 316, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 316, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -13038,7 +13365,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitConstants(void) {
   if (__Pyx_InitString(__pyx_string_tab[11], &__pyx_n_s_RipsComplex) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   if (__Pyx_InitString(__pyx_string_tab[12], &__pyx_n_s_Rips_simplex_tree_sample) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   if (__Pyx_InitString(__pyx_string_tab[13], &__pyx_n_s__2) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[14], &__pyx_n_s__24) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[14], &__pyx_n_s__26) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   if (__Pyx_InitString(__pyx_string_tab[15], &__pyx_kp_u__3) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   if (__Pyx_InitString(__pyx_string_tab[16], &__pyx_n_s_add) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   if (__Pyx_InitString(__pyx_string_tab[17], &__pyx_n_s_args) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
@@ -13071,53 +13398,54 @@ static CYTHON_SMALL_CODE int __Pyx_InitConstants(void) {
   if (__Pyx_InitString(__pyx_string_tab[44], &__pyx_n_s_f) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   if (__Pyx_InitString(__pyx_string_tab[45], &__pyx_n_s_fastforman) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   if (__Pyx_InitString(__pyx_string_tab[46], &__pyx_kp_s_fastforman_pyx) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[47], &__pyx_n_s_find_cliques) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[48], &__pyx_n_s_frequency) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[49], &__pyx_n_s_from_numpy_array) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[50], &__pyx_kp_u_gc) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[51], &__pyx_n_s_gd) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[52], &__pyx_n_s_genexpr) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[53], &__pyx_n_s_get_filtration) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[54], &__pyx_n_s_gudhi) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[55], &__pyx_n_s_i) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[56], &__pyx_n_s_import) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[57], &__pyx_n_s_initializing) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[58], &__pyx_n_s_intersection) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[59], &__pyx_n_s_is_coroutine) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[60], &__pyx_kp_u_isenabled) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[61], &__pyx_n_s_items) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[62], &__pyx_n_s_itertools) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[63], &__pyx_n_s_j0) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[64], &__pyx_n_s_k) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[65], &__pyx_n_s_keys) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[66], &__pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[67], &__pyx_n_s_math) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[68], &__pyx_n_s_max_dim) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[69], &__pyx_n_s_max_dimension) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[70], &__pyx_n_s_max_edge_length) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[71], &__pyx_n_s_n) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[72], &__pyx_n_s_name) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[73], &__pyx_n_s_ndarray) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[74], &__pyx_n_s_neighbors) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[75], &__pyx_n_s_networkx) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[76], &__pyx_n_s_nodes) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[77], &__pyx_n_s_np) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[78], &__pyx_n_s_numpy) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[79], &__pyx_n_s_nx) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[80], &__pyx_n_s_points) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[81], &__pyx_n_s_range) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[82], &__pyx_n_s_ricci_cell) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[83], &__pyx_n_s_rips_generator) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[84], &__pyx_n_s_send) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[85], &__pyx_n_s_skeleton) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[86], &__pyx_n_s_spec) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[87], &__pyx_n_s_sum) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[88], &__pyx_n_s_tee) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[89], &__pyx_n_s_test) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[90], &__pyx_n_s_throw) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[91], &__pyx_n_s_to_numpy_array) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[92], &__pyx_n_s_values) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[93], &__pyx_n_s_where) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[47], &__pyx_n_s_fill_info) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[48], &__pyx_n_s_find_cliques) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[49], &__pyx_n_s_frequency) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[50], &__pyx_n_s_from_numpy_array) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[51], &__pyx_kp_u_gc) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[52], &__pyx_n_s_gd) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[53], &__pyx_n_s_genexpr) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[54], &__pyx_n_s_get_filtration) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[55], &__pyx_n_s_gudhi) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[56], &__pyx_n_s_i) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[57], &__pyx_n_s_import) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[58], &__pyx_n_s_initializing) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[59], &__pyx_n_s_intersection) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[60], &__pyx_n_s_is_coroutine) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[61], &__pyx_kp_u_isenabled) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[62], &__pyx_n_s_items) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[63], &__pyx_n_s_itertools) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[64], &__pyx_n_s_j0) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[65], &__pyx_n_s_k) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[66], &__pyx_n_s_keys) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[67], &__pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[68], &__pyx_n_s_math) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[69], &__pyx_n_s_max_dim) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[70], &__pyx_n_s_max_dimension) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[71], &__pyx_n_s_max_edge_length) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[72], &__pyx_n_s_n) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[73], &__pyx_n_s_name) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[74], &__pyx_n_s_ndarray) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[75], &__pyx_n_s_neighbors) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[76], &__pyx_n_s_networkx) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[77], &__pyx_n_s_nodes) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[78], &__pyx_n_s_np) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[79], &__pyx_n_s_numpy) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[80], &__pyx_n_s_nx) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[81], &__pyx_n_s_points) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[82], &__pyx_n_s_range) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[83], &__pyx_n_s_ricci_cell) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[84], &__pyx_n_s_rips_generator) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[85], &__pyx_n_s_send) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[86], &__pyx_n_s_skeleton) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[87], &__pyx_n_s_spec) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[88], &__pyx_n_s_sum) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[89], &__pyx_n_s_tee) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[90], &__pyx_n_s_test) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[91], &__pyx_n_s_throw) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[92], &__pyx_n_s_to_numpy_array) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[93], &__pyx_n_s_values) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[94], &__pyx_n_s_where) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   #endif
   #if !CYTHON_USE_MODULE_STATE
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
@@ -13802,64 +14130,76 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_compute_avg, __pyx_t_2) < 0) __PYX_ERR(0, 162, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fastforman.pyx":182
- *     return output
+  /* "fastforman.pyx":183
+ * 
  * 
  * cpdef dict dict2neigh(dict D,double cutoff):             # <<<<<<<<<<<<<<
  *     cdef int i,x,y
  *     cdef double val
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10fastforman_16dict2neigh, 0, __pyx_n_s_dict2neigh, NULL, __pyx_n_s_fastforman, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10fastforman_16dict2neigh, 0, __pyx_n_s_dict2neigh, NULL, __pyx_n_s_fastforman, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_dict2neigh, __pyx_t_2) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_dict2neigh, __pyx_t_2) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fastforman.pyx":195
+  /* "fastforman.pyx":196
  *     return Neigh
  * 
  * def compute_FRC(D,cutoff,dim):             # <<<<<<<<<<<<<<
  *     """Computes the Forman-Ricci Curvature (FRC) up to dimension dim from the object provided.
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10fastforman_18compute_FRC, 0, __pyx_n_s_compute_FRC, NULL, __pyx_n_s_fastforman, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10fastforman_18compute_FRC, 0, __pyx_n_s_compute_FRC, NULL, __pyx_n_s_fastforman, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_compute_FRC, __pyx_t_2) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_compute_FRC, __pyx_t_2) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fastforman.pyx":231
+  /* "fastforman.pyx":232
  *     return FRC(C,Neigh)
+ * 
+ * cpdef fill_info(dict D,int n):             # <<<<<<<<<<<<<<
+ *     cdef int k
+ *     for k in range(n):
+ */
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10fastforman_20fill_info, 0, __pyx_n_s_fill_info, NULL, __pyx_n_s_fastforman, __pyx_d, ((PyObject *)__pyx_codeobj__21)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fill_info, __pyx_t_2) < 0) __PYX_ERR(0, 232, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "fastforman.pyx":240
+ *             D[k]=0
  * 
  * def compute_FRC_node(D,cutoff,dim):             # <<<<<<<<<<<<<<
  *     """Computes the Forman-Ricci Curvature (FRC) for the nodes (up to dimension dim from the object provided).
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10fastforman_20compute_FRC_node, 0, __pyx_n_s_compute_FRC_node, NULL, __pyx_n_s_fastforman, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 231, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10fastforman_22compute_FRC_node, 0, __pyx_n_s_compute_FRC_node, NULL, __pyx_n_s_fastforman, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 240, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_compute_FRC_node, __pyx_t_2) < 0) __PYX_ERR(0, 231, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_compute_FRC_node, __pyx_t_2) < 0) __PYX_ERR(0, 240, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fastforman.pyx":269
+  /* "fastforman.pyx":278
  * 
  * 
  * def compute_average_FRC(D,cutoff,dim):             # <<<<<<<<<<<<<<
  *     """Computes the average Forman-Ricci Curvature (FRC) up to dimension dim from the object provided.
  *     The average FRC is known as the sum of all local FRC divided by the number of d-cells.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10fastforman_22compute_average_FRC, 0, __pyx_n_s_compute_average_FRC, NULL, __pyx_n_s_fastforman, __pyx_d, ((PyObject *)__pyx_codeobj__21)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10fastforman_24compute_average_FRC, 0, __pyx_n_s_compute_average_FRC, NULL, __pyx_n_s_fastforman, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_compute_average_FRC, __pyx_t_2) < 0) __PYX_ERR(0, 269, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_compute_average_FRC, __pyx_t_2) < 0) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "fastforman.pyx":307
+  /* "fastforman.pyx":316
  *     return compute_avg(C,Neigh,dim)
  * 
  * def compute_FRC_frequency(D,cutoff,dim):             # <<<<<<<<<<<<<<
  *     """Computes the frequency of Forman-Ricci Curvature (FRC) values up to dimension dim from the object provided.
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10fastforman_24compute_FRC_frequency, 0, __pyx_n_s_compute_FRC_frequency, NULL, __pyx_n_s_fastforman, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 307, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10fastforman_26compute_FRC_frequency, 0, __pyx_n_s_compute_FRC_frequency, NULL, __pyx_n_s_fastforman, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 316, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_compute_FRC_frequency, __pyx_t_2) < 0) __PYX_ERR(0, 307, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_compute_FRC_frequency, __pyx_t_2) < 0) __PYX_ERR(0, 316, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "fastforman.pyx":1
@@ -18083,7 +18423,7 @@ __Pyx_PyType_GetName(PyTypeObject* tp)
                                                __pyx_n_s_name);
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) {
         PyErr_Clear();
-        Py_XSETREF(name, __Pyx_NewRef(__pyx_n_s__24));
+        Py_XSETREF(name, __Pyx_NewRef(__pyx_n_s__26));
     }
     return name;
 }

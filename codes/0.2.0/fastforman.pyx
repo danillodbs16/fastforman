@@ -179,6 +179,7 @@ cpdef  dict compute_avg(L, dict Neigh,int max_dim):
             output[d]=0.0
     return output
 
+
 cpdef dict dict2neigh(dict D,double cutoff):
     cdef int i,x,y
     cdef double val
@@ -227,6 +228,14 @@ def compute_FRC(D,cutoff,dim):
 
     
     return FRC(C,Neigh)
+
+cpdef fill_info(dict D,int n):
+    cdef int k
+    for k in range(n):
+        try:
+            D[k]
+        except:
+            D[k]=0
 
 def compute_FRC_node(D,cutoff,dim):
     """Computes the Forman-Ricci Curvature (FRC) for the nodes (up to dimension dim from the object provided).

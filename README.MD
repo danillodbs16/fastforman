@@ -73,6 +73,25 @@ import fastforman as ff
    A dictionary in which the keys are the dimension and the values are dictionary whose values keys are the simpleces and the values are the respective FRC.
     
     
+- ``compute_FRC_node``:
+
+  ***Input:*** 
+        
+    - `D`, can be:
+     - A `dictionary` in which the keys are integer numbers from 0 to len(D)-1 and the values are the N-dimensional points;
+
+     - A symmetric `numpy.matrix` of float numbers;
+
+     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes.
+
+    - `cutoff`: Float number for the threshold distance between points.
+    - `dim`: Integer, the maximum simplex dimension to compute FRC.
+   
+    
+   ***Output:*** 
+     
+   A dictionary in which the keys are the dimension and the values are dictionary whose values keys are the nodes and the values are the respective FRC. When the node does not have curvature it will be set as numpy.nan.
+    
 
 
 - ``compute_average_FRC``:

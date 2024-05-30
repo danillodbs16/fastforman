@@ -148,7 +148,8 @@ import fastforman as ff
     - `dim`: Integer, the maximum simplex dimension to compute FRC.
     
   ***Output:*** A dictionary in which the keys are the dimension and the values is a dictionary of the frequency of FRC values. 
- 
+
+***
 
 - ### ``compute_FRC_node_frequency``:
 

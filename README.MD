@@ -17,6 +17,9 @@ This work is based on our set theoretical approach for computing Forman-Ricci cu
 - `setup.py`
 - `Example.ipynb`
 
+## Last version:
+    0.4.0
+
 ## Python version: 
     3.8.5
 ## Package requirement:
@@ -51,9 +54,17 @@ After successful compilation, the generated `fastforman` file can be imported as
 ```python
 import fastforman as ff
 ```
+***
 ## Functions:
 
-- ``compute_FRC``:
+- ``compute_FRC``
+- ``compute_FRC_node``
+- ``compute_average_FRC``
+- ``compute_FRC_frequency``
+- ``compute_FRC_node_frequency``
+***
+
+- ### ``compute_FRC``:
 
   ***Input:*** 
         
@@ -62,18 +73,20 @@ import fastforman as ff
 
      - A symmetric `numpy.matrix` of float numbers;
 
-     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes.
+     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attribute,
+     
+     - A string of a graphml/xml file.
 
     - `cutoff`: Float number for the threshold distance between points.
     - `dim`: Integer, the maximum simplex dimension to compute FRC.
    
     
-   ***Output:*** 
-     
-   A dictionary in which the keys are the dimension and the values are dictionary whose values keys are the simpleces and the values are the respective FRC.
+  ***Output:*** 
+      A dictionary in which the keys are the dimension and the values are dictionary whose values keys are the simpleces and the values are the respective FRC.
+
+***
     
-    
-- ``compute_FRC_node``:
+- ### ``compute_FRC_node``:
 
   ***Input:*** 
         
@@ -82,19 +95,20 @@ import fastforman as ff
 
      - A symmetric `numpy.matrix` of float numbers;
 
-     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes.
+     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes,
+     
+     - A string of a graphml/xml file.
 
     - `cutoff`: Float number for the threshold distance between points.
     - `dim`: Integer, the maximum simplex dimension to compute FRC.
    
     
    ***Output:*** 
-     
    A dictionary in which the keys are the dimension and the values are dictionary whose values keys are the nodes and the values are the respective FRC. When the node does not have curvature it will be set as numpy.nan.
     
+***
 
-
-- ``compute_average_FRC``:
+- ### ``compute_average_FRC``:
 
   ***Input:*** 
         
@@ -103,18 +117,21 @@ import fastforman as ff
 
      - A symmetric `numpy.matrix` of float numbers;
 
-     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes.
+     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes,
+     
+     - A string of a graphml/xml file.
 
     - `cutoff`: Float number for the threshold distance between points.
     - `dim`: Integer, the maximum simplex dimension to compute FRC.
    
     
-   ***Output:*** 
+  ***Output:*** 
      
    A dictionary in which the keys are the dimension and the values are the average FRC for fixed dimension.
     
-    
-- ``compute_FRC_frequency``:
+***
+
+- ### ``compute_FRC_frequency``:
 
      ***Input:*** 
          
@@ -123,15 +140,35 @@ import fastforman as ff
 
      - A symmetric `numpy.matrix` of float numbers;
 
-     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes.
+     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes,
+     
+     - A string of a graphml/xml file.
 
     - `cutoff`: Float number for the threshold distance between points.
     - `dim`: Integer, the maximum simplex dimension to compute FRC.
-   
     
+  ***Output:*** A dictionary in which the keys are the dimension and the values is a dictionary of the frequency of FRC values. 
+ 
+
+- ### ``compute_FRC_node_frequency``:
+
+     ***Input:*** 
+         
+    - `D`, can be:
+     - A `dictionary` in which the keys are integer numbers from 0 to len(D)-1 and the values are the N-dimensional points;
+
+     - A symmetric `numpy.matrix` of float numbers;
+
+     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes,
+     
+     - A string of a graphml/xml file.
+
+    - `cutoff`: Float number for the threshold distance between points.
+    - `dim`: Integer, the maximum simplex dimension to compute FRC.
     
-   ***Output:*** A dictionary in which the keys are the dimension and the values is a dictionary of the frequency of FRC values.
-    
+  ***Output:*** A dictionary in which the keys are the dimension and the values are dictionaries of the frequency of FRC values per node. 
+ 
+***
 Check out our examples.
 
 ## Contact and Support:

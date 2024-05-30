@@ -3,7 +3,19 @@ from itertools import combinations,tee
 from math import dist
 import gudhi as gd
 import networkx as nx
+import re
 
+
+
+def filter_graph(G,cutoff):
+    for e in G.edges():
+        x,y=e
+        try:
+            w=G[x][y]["weight"]
+        except:
+            w=1.
+        if w>cutoff:
+            G.remove_edge(*e)
 
 def cliques_networkx(G,k):
     """An adaptation of  netowkrx algorithm for finding cliques up to fixed dimensinon.
@@ -41,7 +53,71 @@ def cliques_gudhi(data,double f,int d):
     rips_generator = Rips_simplex_tree_sample.get_filtration()
       
     return (i[0] for i in rips_generator if len(i[0])>1)
+
+def mapping_graph(G):
+    H=nx.Graph()
+    Nodes=list(G.nodes())
+    mapping={Nodes[i]:i for i in range(len(Nodes))}
+    H.add_nodes_from([i for i in range(len(Nodes))])
+    for e in G.edges():
+        x,y=e
+        mx,my=mapping[x],mapping[y]
+        H.add_edge(mx,my)
+        try:
+            H[mx][my]["weight"]=G[x][y]["weight"]
+        except:
+            next
+    mapping={mapping[i]:i for i in mapping.keys()}
+    return H,mapping        
+
+
+def parse_graphml_to_networkx(filename):
+    """Parses a netowrkx undirected graph from the graphml/xml file provided.
+    Input: filename: a string of the file name.
+    Output: A netowrkx undirected graph with numerical enumeration of nodes and a dictionary for mapping the original nodes labels"""
    
+    file=open(filename)
+    Graph=nx.Graph()
+  
+    Dict={}
+    counter=-1
+    weight_key=None
+    key_info="None"
+    quoted_strings=""
+    
+   
+    for line in file:
+        
+        if "<key id" in line:
+            quoted_strings = re.findall(r'"(.*?)"', line)
+        if "weight" in quoted_strings:
+            weight_key=quoted_strings[0]
+            key_info="<data key="+'"'+weight_key+'"'
+        #print(line)
+        if "<node id" in line:
+            quoted_strings = re.findall(r'"(.*?)"', line)
+            node=quoted_strings[0]
+          
+            counter+=1
+            Dict[node]=counter
+        
+    
+        if "<edge id" in line:
+            quoted_strings = re.findall(r'"(.*?)"', line)
+            Id,x,y=quoted_strings
+            if x!=y:
+                Graph.add_edge(*[Dict[x],Dict[y]])
+           # print(quoted_strings)
+        if key_info in line:
+            quoted_strings = re.findall(r'>(.*?)<', line)
+            if x!=y:
+                Graph[Dict[x]][Dict[y]]["weight"]=float(quoted_strings[0])
+                
+    Graph.remove_edges_from(nx.selfloop_edges(Graph))
+    Dict={Dict[i]:i for i in Dict.keys()}
+    return Graph,Dict    
+    
+        
 
 
 cpdef int ricci_cell(list c,dict Neigh):
@@ -250,6 +326,13 @@ cpdef dict dict2neigh(dict D,double cutoff):
             Neigh[y].add(x)
     return Neigh
 
+def mapping_dict(D):
+    keys=list(D.keys())
+
+    mapping={i:keys[i] for i in range(len(keys))}
+    Dicto=dict(tuple(zip([i for i in range(len(D))],list(D.values()))))
+    return Dicto,mapping
+
 def compute_FRC(D,cutoff,dim):
     """Computes the Forman-Ricci Curvature (FRC) up to dimension dim from the object provided.
    
@@ -260,39 +343,92 @@ def compute_FRC(D,cutoff,dim):
     - A np.ndarray object that represents a symmetric matrix of float numbers
     cutoff: A float number for the threshold values for distance (if D is a dictionary), weights 
     (if D is a nx.Graph) of float values (if D is a np.matrix);
+    - A string, the file name of the graphml/xml file.
 
     dim: integer, the maximum simplex dimension allowed to the computation.
 
     Output:
     a dictionary whose keys are the dimensions and the values are dictionaries with the FRC for each cell."""
+
+    def map_tuple(t, mapping):
+        return tuple(mapping.get(i, i) for i in t)
     
     if isinstance(D, np.ndarray):
-        n=len(D)
+       # n=len(D)
         M=np.where(D<=cutoff,D,0)
         M=nx.from_numpy_array(M)
         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
         C=cliques_networkx(M,dim)
+        F=FRC(C,Neigh)
+
+        for d in range(1,dim+1):
+            if d not in F.keys():
+                F[d]={}
 
     elif isinstance(D,nx.Graph):
-        D.remove_edges_from(nx.selfloop_edges(D))
-        n=D.number_of_nodes()
-        M=nx.to_numpy_array(D)
-        M=np.where(M<=cutoff,M,0)
-        M=nx.from_numpy_array(M)
-        Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
-        C=cliques_networkx(M,dim)
+        G,Dicto=mapping_graph(D)
+        G.remove_edges_from(nx.selfloop_edges(G))
+        filter_graph(G,cutoff)
+        #n=D.number_of_nodes()
+        #M=nx.to_numpy_array(D)
+        #M=np.where(M<=cutoff,M,0)
+        #M=nx.from_numpy_array(M)
+        Neigh={i:set(G.neighbors(i)) for i in G.nodes()}
+        C=cliques_networkx(G,dim)
+        F=FRC(C,Neigh)
 
-    else:
-        n=len(D)
-        Neigh=dict2neigh(D,cutoff)
-        C=cliques_gudhi(D.values(),cutoff,dim)
+        for d in range(1,dim+1):
+            if d not in F.keys():
+                F[d]={}
+
+        for d in F.keys():
+            try:
+                F[d]={map_tuple(k, Dicto): v for k, v in F[d].items()}
+            except:
+                next 
 
     
-    F=FRC(C,Neigh)
 
-    for d in range(1,dim+1):
-        if d not in F.keys():
-            F[d]={i:0 for i in  range(-n+2*(d+1),n+1)}
+    elif isinstance(D,str):
+        G,Dicto= parse_graphml_to_networkx(D)
+        #n=G.number_of_nodes()
+        filter_graph(G,cutoff)
+        Neigh={i:set(G.neighbors(i)) for i in G.nodes()}
+        C=cliques_networkx(G,dim)
+        F=FRC(C,Neigh)
+
+        for d in range(1,dim+1):
+            if d not in F.keys():
+                F[d]={}
+
+        
+        for d in F.keys():
+            try:
+                F[d]={map_tuple(k, Dicto): v for k, v in F[d].items()}
+            except:
+                next    
+                    
+
+        
+
+    else:
+       # n=len(D)
+        Dicto,mapping=mapping_dict(D)
+        Neigh=dict2neigh(Dicto,cutoff)
+        C=cliques_gudhi(Dicto.values(),cutoff,dim)
+        F=FRC(C,Neigh)
+        for d in range(1,dim+1):
+            if d not in F.keys():
+                F[d]={}
+
+        for d in F.keys():
+            try:
+                F[d]={map_tuple(k, mapping): v for k, v in F[d].items()}
+            except:
+                next  
+
+    
+   
     return F
 
 cpdef dict fill_info(dict D,int n):
@@ -315,7 +451,7 @@ def compute_FRC_node(D,cutoff,dim):
     - A np.ndarray object that represents a symmetric matrix of float numbers
     cutoff: A float number for the threshold values for distance (if D is a dictionary), weights 
     (if D is a nx.Graph) of float values (if D is a np.matrix);
-
+    - A string, the file name of the graphml/xml file.
     dim: integer, the maximum simplex dimension allowed to the computation.
 
     Output:
@@ -328,34 +464,102 @@ def compute_FRC_node(D,cutoff,dim):
         M=nx.from_numpy_array(M)
         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
         C=cliques_networkx(M,dim)
+        F=FRC_node(C,Neigh)
+
+        for d in range(1,dim+1):
+            try:
+                F[d]
+            except:
+                F[d]={}
+               
+            for i in range(n):
+                try:
+                    F[d][i]
+                except:
+                    F[d][i]=np.nan
+            F[d]=dict(sorted(F[d].items())) 
+
 
     elif isinstance(D,nx.Graph):
-        n=D.number_of_nodes()
-        M=nx.to_numpy_array(D)
-        M=np.where(M<=cutoff,M,0)
-        M=nx.from_numpy_array(M)
-        Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
-        C=cliques_networkx(M,dim)
+        G,Dicto=mapping_graph(D)
+        G.remove_edges_from(nx.selfloop_edges(G))
+        filter_graph(G,cutoff)
+        n=G.number_of_nodes()
+        #M=nx.to_numpy_array(D)
+        #M=np.where(M<=cutoff,M,0)
+        #M=nx.from_numpy_array(M)
+        Neigh={i:set(G.neighbors(i)) for i in G.nodes()}
+        C=cliques_networkx(G,dim)
+        F=FRC_node(C,Neigh)
+
+        for d in range(1,dim+1):
+            try:
+                F[d]
+            except:
+                F[d]={}
+               
+            for i in range(n):
+                try:
+                    F[d][i]
+                except:
+                    F[d][i]=np.nan
+            F[d]=dict(sorted(F[d].items()))
+
+        for d in F.keys():
+            F[d]={Dicto.get(k, k): v for k, v in F[d].items()}  
+
+
+    elif isinstance(D,str):
+        G,Dicto= parse_graphml_to_networkx(D)
+        n=G.number_of_nodes()
+        filter_graph(G,cutoff)
+        Neigh={i:set(G.neighbors(i)) for i in G.nodes()}
+        C=cliques_networkx(G,dim)
+        F=FRC_node(C,Neigh)
+
+
+        for d in range(1,dim+1):
+            try:
+                F[d]
+            except:
+                F[d]={}
+               
+            for i in range(n):
+                try:
+                    F[d][i]
+                except:
+                    F[d][i]=np.nan
+            F[d]=dict(sorted(F[d].items()))
+
+        for d in F.keys():
+            F[d]={Dicto.get(k, k): v for k, v in F[d].items()}      
+
+
 
     else:
         n=len(D)
-        Neigh=dict2neigh(D,cutoff)
-        C=cliques_gudhi(D.values(),cutoff,dim)
-
-    F=FRC_node(C,Neigh)
-
-    for d in range(1,dim+1):
-        try:
-            F[d]
-        except:
-            F[d]={}
-               
-        for i in range(n):
+        Dicto,mapping=mapping_dict(D)
+        Neigh=dict2neigh(Dicto,cutoff)
+        C=cliques_gudhi(Dicto.values(),cutoff,dim)
+        F=FRC_node(C,Neigh)
+        for d in range(1,dim+1):
             try:
-                F[d][i]
+                F[d]
             except:
-                F[d][i]=np.nan
-        F[d]=dict(sorted(F[d].items()))        
+                F[d]={}
+               
+            for i in range(n):
+                try:
+                    F[d][i]
+                except:
+                    F[d][i]=np.nan
+            F[d]=dict(sorted(F[d].items()))
+
+        for d in F.keys():
+            F[d]={mapping.get(k, k): v for k, v in F[d].items()}      
+
+
+    
 
    
     return F
@@ -371,6 +575,7 @@ def compute_average_FRC(D,cutoff,dim):
     - A np.ndarray object that represents a symmetric matrix of float numbers
     cutoff: A float number for the threshold values for distance (if D is a dictionary), weights 
     (if D is a nx.Graph) of float values (if D is a np.matrix);
+    - A string, the file name of the graphml/xml file.
 
     dim: integer, the maximum simplex dimension allowed to the computation.
     
@@ -382,21 +587,37 @@ def compute_average_FRC(D,cutoff,dim):
         M=nx.from_numpy_array(M)
         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
         C=cliques_networkx(M,dim)
+        F=compute_avg(C,Neigh,dim)
 
     elif isinstance(D,nx.Graph):
-        M=nx.to_numpy_array(D)
-        M=np.where(M<=cutoff,M,0)
-        M=nx.from_numpy_array(M)
+        #M=nx.to_numpy_array(D)
+        #M=np.where(M<=cutoff,M,0)
+        M,Dicto=mapping_graph(D)
+        M.remove_edges_from(nx.selfloop_edges(M))
+        filter_graph(M,cutoff)
         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
         C=cliques_networkx(M,dim)
+        F=compute_avg(C,Neigh,dim)
+
+    elif isinstance(D,str):
+        G,Dicto= parse_graphml_to_networkx(D)
+        G.remove_edges_from(nx.selfloop_edges(G))
+        n=G.number_of_nodes()
+        filter_graph(G,cutoff)
+        Neigh={i:set(G.neighbors(i)) for i in G.nodes()}
+        C=cliques_networkx(G,dim)
+        F=compute_avg(C,Neigh,dim)
+        
 
     else:
-        Neigh=dict2neigh(D,cutoff)
-        C=cliques_gudhi(D.values(),cutoff,dim)
-
+        Dicto,mapping=mapping_dict(D)
+        Neigh=dict2neigh(Dicto,cutoff)
+        C=cliques_gudhi(Dicto.values(),cutoff,dim)
+        F=compute_avg(C,Neigh,dim)
     
     
-    return compute_avg(C,Neigh,dim)
+    
+    return F
 
 def compute_FRC_frequency(D,cutoff,dim):
     """Computes the frequency of Forman-Ricci Curvature (FRC) values up to dimension dim from the object provided.
@@ -408,6 +629,7 @@ def compute_FRC_frequency(D,cutoff,dim):
     - A np.ndarray object that represents a symmetric matrix of float numbers
     cutoff: A float number for the threshold values for distance (if D is a dictionary), weights 
     (if D is a nx.Graph) of float values (if D is a np.matrix);
+    - A string, the file name of the graphml/xml file.
 
     dim: integer, the maximum simplex dimension allowed to the computation.
 
@@ -416,27 +638,57 @@ def compute_FRC_frequency(D,cutoff,dim):
     
        
     if isinstance(D, np.ndarray):
+        n=len(D)
         M=np.where(D<=cutoff,D,0)
         M=nx.from_numpy_array(M)
         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
         C=cliques_networkx(M,dim)
+        F=frequency(C,Neigh,dim,n)
+        for d in range(1,dim+1):
+            if d not in F.keys():
+                F[d]={}
 
     elif isinstance(D,nx.Graph):
-        M=nx.to_numpy_array(D)
-        M=np.where(M<=cutoff,M,0)
-        M=nx.from_numpy_array(M)
+        n=len(D)
+        M,Dicto=mapping_graph(D)
+        M.remove_edges_from(nx.selfloop_edges(M))
+        filter_graph(M,cutoff)
+        #M=nx.to_numpy_array(D)
+        #M=np.where(M<=cutoff,M,0)
+        #M=nx.from_numpy_array(M)
         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
         C=cliques_networkx(M,dim)
+        F=frequency(C,Neigh,dim,n)
+        for d in range(1,dim+1):
+            if d not in F.keys():
+                F[d]={}
+
+    elif isinstance(D,str):
+        G,Dicto= parse_graphml_to_networkx(D)
+        G.remove_edges_from(nx.selfloop_edges(G))
+        n=G.number_of_nodes()
+        filter_graph(G,cutoff)
+        Neigh={i:set(G.neighbors(i)) for i in G.nodes()}
+        C=cliques_networkx(G,dim)
+        F=frequency(C,Neigh,dim,n)
+        for d in range(1,dim+1):
+            if d not in F.keys():
+                F[d]={}
+
 
     else:
-        Neigh=dict2neigh(D,cutoff)
-        C=cliques_gudhi(D.values(),cutoff,dim)
+        n=len(D)
+        Dicto,mapping=mapping_dict(D)
+        Neigh=dict2neigh(Dicto,cutoff)
+        C=cliques_gudhi(Dicto.values(),cutoff,dim)
+        F=frequency(C,Neigh,dim,n)
+
+
+        for d in range(1,dim+1):
+            if d not in F.keys():
+                F[d]={}
     
-    n=len(D)
-    F=frequency(C,Neigh,dim,n)
-    for d in range(1,dim+1):
-        if d not in F.keys():
-            F[d]={}
+    
     
     return F
 
@@ -451,6 +703,7 @@ def compute_FRC_node_frequency(D,cutoff,dim):
     - A np.ndarray object that represents a symmetric matrix of float numbers
     cutoff: A float number for the threshold values for distance (if D is a dictionary), weights 
     (if D is a nx.Graph) of float values (if D is a np.matrix);
+    - A string, the file name of the graphml/xml file.
 
     dim: integer, the maximum simplex dimension allowed to the computation.
 
@@ -459,26 +712,52 @@ def compute_FRC_node_frequency(D,cutoff,dim):
     
        
     if isinstance(D, np.ndarray):
+        n=len(D)
         M=np.where(D<=cutoff,D,0)
         M=nx.from_numpy_array(M)
         Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
         C=cliques_networkx(M,dim)
+        F=frequency_node(C,Neigh,dim,n)
 
     elif isinstance(D,nx.Graph):
-        M=nx.to_numpy_array(D)
-        M=np.where(M<=cutoff,M,0)
-        M=nx.from_numpy_array(M)
-        Neigh={i:set(M.neighbors(i)) for i in M.nodes()}
-        C=cliques_networkx(M,dim)
+        n=len(D)
+        G,Dicto=mapping_graph(D)
+        G.remove_edges_from(nx.selfloop_edges(G))
+        n=G.number_of_nodes()
+        filter_graph(G,cutoff)
+        #M=nx.to_numpy_array(D)
+        #M=np.where(M<=cutoff,M,0)
+        #M=nx.from_numpy_array(M)
+        Neigh={i:set(G.neighbors(i)) for i in G.nodes()}
+        C=cliques_networkx(G,dim)
+        F=frequency_node(C,Neigh,dim,n)
+        for d in F.keys():
+            F[d]={Dicto.get(k, k): v for k, v in F[d].items()} 
+
+
+    elif isinstance(D,str):
+        G,Dicto= parse_graphml_to_networkx(D)
+        G.remove_edges_from(nx.selfloop_edges(G))
+        n=G.number_of_nodes()
+        filter_graph(G,cutoff)
+        Neigh={i:set(G.neighbors(i)) for i in G.nodes()}
+        C=cliques_networkx(G,dim)
+        F=frequency_node(C,Neigh,dim,n)
+        for d in F.keys():
+            F[d]={Dicto.get(k, k): v for k, v in F[d].items()} 
+
 
     else:
-        Neigh=dict2neigh(D,cutoff)
-        C=cliques_gudhi(D.values(),cutoff,dim)
+        n=len(D)
+        Dicto,mapping=mapping_dict(D)
+        Neigh=dict2neigh(Dicto,cutoff)
+        C=cliques_gudhi(Dicto.values(),cutoff,dim)
+        F=frequency_node(C,Neigh,dim,n)
+        for d in F.keys():
+            F[d]={mapping.get(k, k): v for k, v in F[d].items()} 
+
+
     
-    n=len(D)
-    F=frequency_node(C,Neigh,dim,n)
-    #for d in range(1,dim+1):
-     #   if d not in F.keys():
-     #       F[d]={}
+    
     
     return F

@@ -165,5 +165,7 @@ danillo.dbs16@gmail.com, dbarros@bcamath.org
 If you appreciate our work, please, cite us:
 
 [1] Efficient set-theoretic algorithms for computing high-order Forman-Ricci curvature on abstract simplicial complexes; Barros de Souza, Danillo; da Cunha, Jontatas, A.N. Santos, Fernando; Jost, Juergen & Rodigues, Serafim; Link: https://royalsocietypublishing.org/doi/10.1098/rspa.2024.0364
+
 [2] Forman-Ricci curvature Benchmark report, Kaggle repository, Link: https://www.kaggle.com/datasets/danillosouza2020/forman-ricci-curvature-benchmark-report
+
 [3] Alternative set-theoretical algorithms for efficient computations of cliques in Vietoris-Rips complexes, Link: https://arxiv.org/abs/2502.14593

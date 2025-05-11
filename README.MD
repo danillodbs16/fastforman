@@ -6,9 +6,9 @@
    **ORCID: [0000-0002-7792-8862](https://orcid.org/0000-0002-7762-8862)**
 
 ***
-This work is based on our set theoretical approach for computing Forman-Ricci curvature [[1]](https://royalsocietypublishing.org/doi/10.1098/rspa.2024.0364). We implemented our code in Python language and coinded **fastforman**. We profiled the time processing and memory usage and benchmarked with other alogorithms in the literature, namelly, **GeneralisedFormanRicci** and **HodgeLaplacians**. The benchmark codes and reports can be found at [[2]](https://www.kaggle.com/datasets/danillosouza2020/forman-ricci-curvature-benchmark-report). 
+This work is based on our set-theoretical approach for computing Forman-Ricci curvature [[1]](https://royalsocietypublishing.org/doi/10.1098/rspa.2024.0364). We implemented our code in Python language and coinded **fastforman**. We profiled the time processing and memory usage and benchmarked with other algorithms in the literature, namely, **GeneralisedFormanRicci** and **HodgeLaplacians**. The benchmark codes and reports can be found at [[2]](https://www.kaggle.com/datasets/danillosouza2020/forman-ricci-curvature-benchmark-report). 
 
- Here, we provide a set-theoretical Python coding for efficiently computing Forman-Ricci Curvature (FRC) for simplicial complexes. We use our own methods for computing the cliques in the simplicial complexes. For more details, at [[3]](https://arxiv.org/abs/2502.14593).
+ Here, we provide a set-theoretical Python coding for efficiently computing Forman-Ricci Curvature (FRC) for simplicial complexes. We use our own methods for computing the cliques in the simplicial complexes. For more details, see [[3]](https://arxiv.org/abs/2502.14593).
 ## Current version:
   0.5.0
 ## New Features:

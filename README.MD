@@ -6,7 +6,7 @@
    **ORCID: [0000-0002-7792-8862](https://orcid.org/0000-0002-7762-8862)**
 
 ***
-This work is based on our set-theoretical approach for computing Forman-Ricci curvature [[1]](https://royalsocietypublishing.org/doi/10.1098/rspa.2024.0364). We implemented our code in Python language and coinded **fastforman**. We profiled the time processing and memory usage and benchmarked with other algorithms in the literature, namely, **GeneralisedFormanRicci** and **HodgeLaplacians**. The benchmark codes and reports can be found at [[2]](https://www.kaggle.com/datasets/danillosouza2020/forman-ricci-curvature-benchmark-report). 
+This work is based on our set-theoretical approach for computing Forman-Ricci curvature [[1]](https://royalsocietypublishing.org/doi/10.1098/rspa.2024.0364). We implemented our code in Python language and coined **fastforman**. We profiled the time processing and memory usage and benchmarked with other algorithms in the literature, namely, **GeneralisedFormanRicci** and **HodgeLaplacians**. The benchmark codes and reports can be found at [[2]](https://www.kaggle.com/datasets/danillosouza2020/forman-ricci-curvature-benchmark-report). 
 
  Here, we provide a set-theoretical Python coding for efficiently computing Forman-Ricci Curvature (FRC) for simplicial complexes. We use our own methods for computing the cliques in the simplicial complexes. For more details, see [[3]](https://arxiv.org/abs/2502.14593).
 ## Current version:
@@ -76,7 +76,7 @@ import fastforman as ff
     - `cutoff`: Float number for the threshold distance between points.
     - `n_neighbors`: Interger, the number of the nearest neighbours to consider. If None, it is not applied.
     - `dim`: Integer, the maximum simplex dimension to compute FRC.
-    - `mapped_nodes`: True or False - if the mapping of the original node labels are kept.
+    - `mapped_nodes`: True or False - if the mapping of the original node labels is kept.
    
     
    ***Output:*** 
@@ -93,19 +93,19 @@ import fastforman as ff
 
      - A symmetric `numpy.matrix` of float numbers;
 
-     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes;
+     - A simple undirected `nx.Graph` that may include the feature `weights` on edges attributes;
      
      - A `string` of the `graph/graphml` file in a directory.
 
     - `cutoff`: Float number for the threshold distance between points.
-    - `n_neighbors`: Interger, the number of the nearest neighbours to consider. If None, it is not applied.
+    - `n_neighbors`: Integer, the number of the nearest neighbours to consider. If None, it is not applied.
     - `dim`: Integer, the maximum simplex dimension to compute FRC.
-    - `mapped_nodes`: True or False - if the mapping of the original node labels are kept.
+    - `mapped_nodes`: True or False - if the mapping of the original node labels is kept.
    
     
    ***Output:*** 
      
-   A dictionary in which the keys are the dimension and the values are dictionary whose values keys are the nodes and the values are the respective FRC. When the node does not have curvature it will be set as numpy.nan.
+   A dictionary in which the keys are the dimensions and the values are a dictionary whose values keys are the nodes and the values are the respective FRC. When the node does not have curvature, it will be set as numpy.nan.
     
 
 
@@ -118,18 +118,18 @@ import fastforman as ff
 
      - A symmetric `numpy.matrix` of float numbers;
 
-     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes;
+     - A simple undirected `nx.Graph` that may include the feature `weights` on edges attributes;
      
      - A `string` of the `graph/graphml` file in a directory.
 
     - `cutoff`: Float number for the threshold distance between points.
-    - `n_neighbors`: Interger, the number of the nearest neighbours to consider. If None, it is not applied.
+    - `n_neighbors`: Integer, the number of the nearest neighbours to consider. If None, it is not applied.
     - `dim`: Integer, the maximum simplex dimension to compute FRC.
   
     
    ***Output:*** 
      
-   A dictionary in which the keys are the dimension and the values are the average FRC for fixed dimension.
+   A dictionary in which the keys are the dimensions and the values are the average FRC for a fixed dimension.
     
     
 - ``compute_FRC_frequency``:
@@ -141,18 +141,18 @@ import fastforman as ff
 
      - A symmetric `numpy.matrix` of float numbers;
 
-     - A simple undirected `nx.Graph` that may include the feature `weights`on edges attributes;
+     - A simple undirected `nx.Graph` that may include the feature `weights` on edges attributes;
      
      - A `string` of the `graph/graphml` file in a directory.
 
     - `cutoff`: Float number for the threshold distance between points.
-    - `n_neighbors`: Interger, the number of the nearest neighbours to consider. If None, it is not applied.
+    - `n_neighbors`: Integer, the number of the nearest neighbours to consider. If None, it is not applied.
     - `dim`: Integer, the maximum simplex dimension to compute FRC.
    
    
     
     
-   ***Output:*** A dictionary in which the keys are the dimension and the values is a dictionary of the frequency of FRC values.
+   ***Output:*** A dictionary in which the keys are the dimension and the values are a dictionary of the frequency of FRC values.
     
 Check out our examples.
 
@@ -162,7 +162,7 @@ danillo.dbs16@gmail.com, dbarros@bcamath.org
 
 ## References: 
 
-If you appreciate our work, please, cite us:
+If you appreciate our work, please cite us:
 
 [1] Efficient set-theoretic algorithms for computing high-order Forman-Ricci curvature on abstract simplicial complexes; Barros de Souza, Danillo; da Cunha, Jontatas, A.N. Santos, Fernando; Jost, Juergen & Rodigues, Serafim; Link: https://royalsocietypublishing.org/doi/10.1098/rspa.2024.0364
 

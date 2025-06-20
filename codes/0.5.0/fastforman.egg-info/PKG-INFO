@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: fastforman
+Version: 0.5.0
+Summary: fastforman - An efficient algorithm for computing Forman-Ricci curvature from point cloud data.
+Home-page: https://github.com/danillodbs16/fastforman
+Author: Danillo Barros de Souza
+Author-email: danillo.dbs16@gmail.com
+Requires-Dist: numpy
+Requires-Dist: cython
+Requires-Dist: gudhi

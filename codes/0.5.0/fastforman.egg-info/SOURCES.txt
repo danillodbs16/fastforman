@@ -1,0 +1,7 @@
+fastforman.c
+setup.py
+fastforman.egg-info/PKG-INFO
+fastforman.egg-info/SOURCES.txt
+fastforman.egg-info/dependency_links.txt
+fastforman.egg-info/requires.txt
+fastforman.egg-info/top_level.txt

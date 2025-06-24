@@ -17,6 +17,7 @@ extensions = find_pyx_modules("fastforman")
 
 setup(
     name="fastforman",
+    version="0.6.0",
     ext_modules=cythonize(extensions, language_level="3"),
     packages=["fastforman"],
     install_requires=[

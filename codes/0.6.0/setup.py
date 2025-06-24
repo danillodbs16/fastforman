@@ -18,7 +18,7 @@ extensions = find_pyx_modules("fastforman")
 setup(
     name="fastforman",
     ext_modules=cythonize(extensions, language_level="3"),
-    packages=["fastforman", "fastforman.VietorisRipsFiltration"],
+    packages=["fastforman"],
     install_requires=[
         "cython",
         "numpy",

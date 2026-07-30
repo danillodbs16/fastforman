@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel", "Cython", "numpy"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fastforman"
+version = "0.7.0"
+description = "Fast computation of Forman-Ricci curvature on Vietoris-Rips complexes"
+readme = "README.md"
+license = {text = "Creative Commons Attribution 4.0 International"}
+authors = [
+    {name="Danillo Barros de Souza", email="danillo.dbs16@gmail.com"}
+]
+requires-python = ">=3.8.5"
+
+dependencies = [
+    "numpy",
+    "scipy",
+    "networkx",
+    "scikit-learn",
+    "cython"
+]
+
+keywords = [
+    "tda",
+    "topological-data-analysis",
+    "geometry",
+    "graph",
+    "curvature",
+    "Vietoris-Rips complexes",
+    "Forman-Ricci curvature"
+]

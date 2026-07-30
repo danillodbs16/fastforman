@@ -2,6 +2,13 @@
 requires = ["setuptools>=68", "wheel", "Cython", "numpy"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+package-dir = {"" = "codes/0.7.0"}
+
+[tool.setuptools.packages.find]
+where = ["codes/0.7.0"]
+include = ["fastforman*"]
+
 [project]
 name = "fastforman"
 version = "0.7.0"
@@ -19,14 +26,4 @@ dependencies = [
     "networkx",
     "scikit-learn",
     "cython"
-]
-
-keywords = [
-    "tda",
-    "topological-data-analysis",
-    "geometry",
-    "graph",
-    "curvature",
-    "Vietoris-Rips complexes",
-    "Forman-Ricci curvature"
 ]

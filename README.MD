@@ -4,7 +4,7 @@
 
 **Author:** Danillo Barros de Souza
 
-**ORCID:** [0000-0002-7762-8862](https://orcid.org/0000-0002-7762-8862)
+**ORCID:** [0000-0002-7792-8862](https://orcid.org/0000-0002-7792-8862)
 
 ---
 
@@ -15,15 +15,18 @@ Here, we provide a set-theoretical Python implementation for efficiently computi
 ## Current version:
 
 ```
-0.6.0
+0.7.0
 ```
 
 ## New Features:
 
 * Added FRC computations of filtrations on Vietoris-Rips Complexes;
-* No need for importing external packages for computing cliques (e.g., `networkx` and `gudhi`);
+* `gudhi` in no longer required for computations;
 * Faster computations and reduced memory usage;
-* Input parameters `n_neighbors` and `mapped_nodes` added;
+* Input parameters `n_neighbors` and `mapped_nodes` added for geometric simplicial complexes;
+* Fixed miscomputation of FRC filtration from verion `0.6.0` (inputs has chanded, see information bellow);
+* Generation of simplicial complex from nearest neighbors computations was removed from `fastforman.VietorisRipsComplex`;
+* Input objects has chaged for Vietoris-Rips complexes computations (e.g.,  `networkx` is no longer required).
 
 **Caution: The root package structure has changed. See previous versions for comparison.**
 
@@ -67,6 +70,12 @@ Run:
 
 ```
 pip install .
+```
+
+If you face *"No module named 'Cython'"* error after cython instalation, you can alternatively use
+
+```
+pip install . --no-build-isolation
 ```
 
 After successful compilation, the package can be imported as:
@@ -158,10 +167,7 @@ Use case: Study of geometric information across filtrations.
   * `M`: `np.ndarray`, point cloud;
   * `max_dim`: Max simplex dimension;
   * `max_dist`: Cutoff distance;
-  * `k_nearest`: Max number of neighbors;
   * `precision`: Decimal rounding for distances;
-  * `metric`: Distance metric (e.g., "euclidean");
-  * `verbose`: Enable debugging output.
 
   **Output:**
 
@@ -193,3 +199,4 @@ Use case: Study of geometric information across filtrations.
 \[4] Barros de Souza, Danillo.
 **FastKnill - Fast computation of Euler characteristics and Knill curvature**.
 [https://github.com/danillodbs16/fastknill](https://github.com/danillodbs16/fastknill)
+

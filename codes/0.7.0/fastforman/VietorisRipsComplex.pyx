@@ -335,9 +335,9 @@ def compute_local_FRC(X,max_dim,max_dist,metric="euclidean",precision=2):
 
     t2=time()
 
-    print("Total ricci computation time: "+str(t1-t0)+" seconds."+"\n")
-    print("Total pos processing time: "+str(t2-t1)+" seconds."+"\n")
-    print("Total computation time: "+str(t2-t0)+" seconds."+"\n")
+   # print("Total ricci computation time: "+str(t1-t0)+" seconds."+"\n")
+    #print("Total pos processing time: "+str(t2-t1)+" seconds."+"\n")
+    #print("Total computation time: "+str(t2-t0)+" seconds."+"\n")
   
 
     return Output1,Output2

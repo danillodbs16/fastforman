@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: fastforman
+Version: 0.7.0
+Summary: Fast computation of Forman-Ricci curvature on Vietoris-Rips complexes
+Author-email: Danillo Barros de Souza <danillo.dbs16@gmail.com>
+License: Creative Commons Attribution 4.0 International
+Requires-Python: >=3.8.5
+Description-Content-Type: text/markdown
+License-File: LICENCE.md
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: networkx
+Requires-Dist: scikit-learn
+Requires-Dist: cython
+Dynamic: license-file

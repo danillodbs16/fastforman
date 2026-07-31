@@ -1,0 +1,8 @@
+LICENCE.md
+pyproject.toml
+codes/0.7.0/fastforman/__init__.py
+codes/0.7.0/fastforman.egg-info/PKG-INFO
+codes/0.7.0/fastforman.egg-info/SOURCES.txt
+codes/0.7.0/fastforman.egg-info/dependency_links.txt
+codes/0.7.0/fastforman.egg-info/requires.txt
+codes/0.7.0/fastforman.egg-info/top_level.txt

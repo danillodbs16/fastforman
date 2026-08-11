@@ -36,7 +36,9 @@ from scipy.spatial.distance import cdist
 
 
 def edge_iterator(X, fmax=np.inf,metric="euclidean",precision=2):
-    D=np.round(cdist(X,X,metric=metric),precision)
+    power=10**precision
+    #D=np.round(cdist(X,X,metric=metric),precision)
+    D=np.ceil(cdist(X,X,metric=metric)*power)/power
     # Indices of the upper triangle (excluding diagonal)
     i, j = np.triu_indices_from(D, k=1)
 

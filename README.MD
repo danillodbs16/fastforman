@@ -4,7 +4,7 @@
 ---
 [![PyPI Downloads](https://static.pepy.tech/personalized-badge/fastforman?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/fastforman)
 ---
-**Author:** Danillo Barros de Souza
+**Author:** [Danillo Barros de Souza](https://www.linkedin.com/in/souza-danillo/)
 
 **ORCID:** [0000-0002-7792-8862](https://orcid.org/0000-0002-7792-8862)
 
